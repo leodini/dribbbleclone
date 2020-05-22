@@ -3,7 +3,7 @@ const User = require("../models/User");
 
 module.exports = {
   async store(req, res) {
-    const { filename } = req.file;
+    const { image } = req.file;
     const { title, description, category } = req.body;
     const { user_id } = req.headers;
 
@@ -18,7 +18,7 @@ module.exports = {
       .map((category) => category.trim());
 
     const newPost = await Post.create({
-      image: filename,
+      image,
       title,
       description,
       category: categoryArray,
