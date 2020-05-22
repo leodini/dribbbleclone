@@ -15,9 +15,10 @@ module.exports = {
     return res.json(newUser);
   },
   async index(req, res) {
-    const { username } = req.query;
-    console.log(username);
-    const users = User.find({ username: username });
+    const { user } = req.query;
+
+    const users = User.find({ username: user });
+
     return res.json(users);
   },
 };

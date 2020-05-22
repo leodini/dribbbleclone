@@ -3,8 +3,12 @@ const mongoose = require("mongoose");
 const PostSchema = new mongoose.Schema({
   title: String,
   description: String,
-  img_url: String,
-  category: String,
+  image: String,
+  category: [String],
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+  },
   likes: [
     {
       type: mongoose.Schema.Types.ObjectId,
