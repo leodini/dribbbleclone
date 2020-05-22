@@ -15,10 +15,7 @@ module.exports = {
     return res.json(newUser);
   },
   async index(req, res) {
-    const { user } = req.query;
-
-    const users = User.find({ username: user });
-
+    const users = await User.find();
     return res.json(users);
   },
 };
