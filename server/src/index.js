@@ -13,11 +13,11 @@ mongoose.connect(
     useNewUrlParser: true,
     useUnifiedTopology: true,
   },
-  () => console.log("db connected")
+  () => console.log(`db connected on ${process.env.MONGO_URI}`)
 );
-
-app.use(routes);
 
 const PORT = process.env.PORT || 3131;
 
 app.listen(PORT, () => console.log(`server running on port ${PORT}`));
+
+app.use(routes);

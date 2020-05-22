@@ -1,6 +1,8 @@
 const express = require("express");
+const UserController = require("./controllers/UserController");
 const routes = express.Router();
 
-routes.get("/", (req, res) => console.log("oi"));
+routes.post("/user", UserController.store);
+routes.get("/user", UserController.index);
 
 module.exports = routes;
