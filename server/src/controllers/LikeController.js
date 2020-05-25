@@ -21,4 +21,9 @@ module.exports = {
 
     return res.json({ message: "post already liked" });
   },
+  async index(req, res) {
+    const { projectId } = req.params;
+    const numLikes = await Like.find({ post: projectId }).countDocuments();
+    return res.json(numLikes);
+  },
 };

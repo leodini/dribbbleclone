@@ -12,6 +12,7 @@ routes.post("/user", UserController.store);
 routes.get("/user", UserController.index);
 
 routes.post("/like/:projectId", LikeController.create);
+routes.get("/like/count/:projectId", LikeController.index);
 
 routes.post("/comment/:projectId", CommentController.create);
 
