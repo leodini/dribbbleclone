@@ -1,4 +1,5 @@
 const User = require("../models/User");
+const Post = require("../models/Post");
 
 module.exports = {
   async store(req, res) {
@@ -15,7 +16,8 @@ module.exports = {
     return res.json(newUser);
   },
   async index(req, res) {
-    const users = await User.find();
-    return res.json(users);
+    const { userId } = req.params;
+    const posts = await Post.find({ author: userId });
+    return res.json(posts);
   },
 };
