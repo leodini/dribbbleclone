@@ -13,7 +13,7 @@ routes.get("/user", UserController.index);
 
 routes.post("/like/:projectId", LikeController.create);
 
-routes.post("/comment", CommentController.create);
+routes.post("/comment/:projectId", CommentController.create);
 
 routes.get("/posts", PostController.index);
 routes.post(
@@ -21,7 +21,6 @@ routes.post(
   multer(uploadConfig).single("file"),
   PostController.store
 );
-
 routes.delete("/posts/:id", PostController.remove);
 
 module.exports = routes;

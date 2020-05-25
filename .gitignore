@@ -1,2 +1,6 @@
 /server/node_modules
 /server/.env
+/server/uploads
+/server/tmp
+/server/tmp/uploads
+/server/tmp/uploads/*

@@ -21,7 +21,7 @@ module.exports = {
       title,
       description,
       category: categoryArray,
-      user: user_id,
+      author: user_id,
     });
 
     return res.json(newPost);
