@@ -3,7 +3,6 @@ const User = require("../models/User");
 
 module.exports = {
   async store(req, res) {
-    const { image } = req.file;
     const { title, description, category } = req.body;
     const { user_id } = req.headers;
 
@@ -18,7 +17,7 @@ module.exports = {
       .map((category) => category.trim());
 
     const newPost = await Post.create({
-      image,
+      image: req.file.filename,
       title,
       description,
       category: categoryArray,
@@ -30,5 +29,18 @@ module.exports = {
   async index(req, res) {
     const posts = await Post.find();
     return res.json(posts);
+  },
+  async remove(req, res) {
+    const { user_id } = req.headers;
+
+    const user = await User.findById(user_id);
+
+    if (user) {
+      const post = await Post.findById(req.params.id);
+      await post.remove();
+      return res.send();
+    }
+
+    return res.json({ message: "user not found" });
   },
 };
