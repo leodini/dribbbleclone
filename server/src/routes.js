@@ -15,6 +15,7 @@ routes.post("/like/:projectId", LikeController.create);
 routes.get("/like/count/:projectId", LikeController.index);
 
 routes.post("/comment/:projectId", CommentController.create);
+routes.get("/comment/:projectId", CommentController.index);
 
 routes.get("/posts", PostController.index);
 routes.post(

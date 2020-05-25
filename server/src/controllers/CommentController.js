@@ -16,9 +16,9 @@ module.exports = {
     return res.json(newComment);
   },
   async index(req, res) {
-    const { postId } = req.query;
+    const { projectId } = req.params;
 
-    const comments = await Comment.find({ postId });
+    const comments = await Comment.find({ project: projectId });
 
     return res.json(comments);
   },
