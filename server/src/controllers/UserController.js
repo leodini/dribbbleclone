@@ -1,13 +1,16 @@
 const User = require("../models/User");
 const Post = require("../models/Post");
+const bcrypt = require("bcrypt");
 
 module.exports = {
   async store(req, res) {
     const { username, password, bio, email, avatar_url } = req.body;
 
+    const encryptedPassword = await bcrypt.hash(password, 10);
+
     const newUser = await User.create({
       username,
-      password,
+      encryptedPassword,
       bio,
       email,
       avatar_url,
@@ -17,7 +20,10 @@ module.exports = {
   },
   async index(req, res) {
     const { userId } = req.params;
-    const user = await User.findById(userId).populate("posts posts.comments");
+    const user = await User.findById(userId)
+      .populate("posts")
+      .populate("comments")
+      .execPopulate();
     return res.json(user);
   },
 };

@@ -32,7 +32,7 @@ module.exports = {
     return res.json(newPost);
   },
   async index(req, res) {
-    const posts = await Post.find().populate("author comments");
+    const posts = await Post.find().populate("author comments").exec();
     return res.json(posts);
   },
   async remove(req, res) {

@@ -24,8 +24,6 @@ module.exports = {
   async index(req, res) {
     const { projectId } = req.params;
 
-    // const comments = await Comment.find({ project: projectId });
-
     const comments = await Comment.find({ project: projectId })
       .populate("author")
       .select("project")
