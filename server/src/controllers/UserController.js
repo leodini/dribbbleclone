@@ -17,7 +17,7 @@ module.exports = {
   },
   async index(req, res) {
     const { userId } = req.params;
-    const posts = await Post.find({ author: userId });
-    return res.json(posts);
+    const user = await User.findById(userId).populate("posts posts.comments");
+    return res.json(user);
   },
 };

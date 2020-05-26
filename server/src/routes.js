@@ -9,7 +9,7 @@ const CommentController = require("./controllers/CommentController");
 const LikeController = require("./controllers/LikeController");
 
 routes.post("/user", UserController.store);
-routes.get("/userposts/:userId", UserController.index);
+routes.get("/user/:userId", UserController.index);
 
 routes.post("/like/:projectId", LikeController.create);
 routes.get("/like/count/:projectId", LikeController.index);

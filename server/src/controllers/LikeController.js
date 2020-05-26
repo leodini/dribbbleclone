@@ -1,4 +1,5 @@
 const Like = require("../models/Like");
+const Post = require("../models/Post");
 
 module.exports = {
   async create(req, res) {
@@ -16,7 +17,13 @@ module.exports = {
         author: user_id,
       });
 
-      return res.json(newLike);
+      const post = await Post.findById(projectId);
+
+      post.likes.push(newLike);
+
+      await post.save();
+
+      return res.json(post);
     }
 
     return res.json({ message: "post already liked" });

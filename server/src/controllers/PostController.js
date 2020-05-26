@@ -1,5 +1,6 @@
 const Post = require("../models/Post");
 const User = require("../models/User");
+const Comment = require("../models/Comment");
 
 module.exports = {
   async store(req, res) {
@@ -24,10 +25,14 @@ module.exports = {
       author: user_id,
     });
 
+    user.posts.push(newPost._id);
+
+    await user.save();
+
     return res.json(newPost);
   },
   async index(req, res) {
-    const posts = await Post.find();
+    const posts = await Post.find().populate("author comments");
     return res.json(posts);
   },
   async remove(req, res) {
