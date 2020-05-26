@@ -6,7 +6,7 @@ const passport = require("passport");
 const flash = require("express-flash");
 const session = require("express-session");
 const routes = require("./routes");
-const initializePassport = require("./passport-config");
+const initializePassport = require("./config/passport");
 
 initializePassport(passport);
 
@@ -24,6 +24,10 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(
+  "/files",
+  express.static(path.resolve(__dirname, "..", "tmp", "uploads"))
+);
 
 mongoose.connect(
   process.env.MONGO_URI,
@@ -36,11 +40,6 @@ mongoose.connect(
 
 const PORT = process.env.PORT || 3131;
 
-app.listen(PORT, () => console.log(`server running on port ${PORT}`));
-
-app.use(
-  "/files",
-  express.static(path.resolve(__dirname, "..", "tmp", "uploads"))
-);
-
 app.use(routes);
+
+app.listen(PORT, () => console.log(`server running on port ${PORT}`));
