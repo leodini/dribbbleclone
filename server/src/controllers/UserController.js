@@ -3,7 +3,7 @@ const Post = require("../models/Post");
 const bcrypt = require("bcrypt");
 
 module.exports = {
-  async store(req, res) {
+  async signUp(req, res) {
     const { username, password, bio, email, avatar_url } = req.body;
 
     const encryptedPassword = await bcrypt.hash(password, 10);
@@ -17,6 +17,10 @@ module.exports = {
     });
 
     return res.json(newUser);
+  },
+  async signIn(req, res) {
+    //todo generate a token
+    console.log(req);
   },
   async index(req, res) {
     const { userId } = req.params;

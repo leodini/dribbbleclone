@@ -1,8 +1,8 @@
-const express = require("express");
 const multer = require("multer");
 const uploadConfig = require("./config/upload");
-const routes = express.Router();
+const routes = require("express-promise-router")();
 const checkAuthentication = require("./middlewares/checkAuthentication");
+const { validateBody, schemas } = require("./helpers/routeHelpers");
 
 const UserController = require("./controllers/UserController");
 const PostController = require("./controllers/PostController");
@@ -10,7 +10,8 @@ const CommentController = require("./controllers/CommentController");
 const LikeController = require("./controllers/LikeController");
 
 //user routes
-routes.post("/user", UserController.store);
+routes.post("/signup", validateBody(schemas.authSchema), UserController.signUp);
+routes.post("/signin", UserController.signIn);
 routes.get("/user/:userId", UserController.index);
 
 //like routes
