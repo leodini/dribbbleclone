@@ -2,7 +2,7 @@ const multer = require("multer");
 const uploadConfig = require("./config/upload");
 const routes = require("express-promise-router")();
 const checkAuthentication = require("./middlewares/checkAuthentication");
-const { validateBody, schemas } = require("./helpers/routeHelpers");
+const { validateBody, schemas } = require("./middlewares/routeHelpers");
 
 const UserController = require("./controllers/UserController");
 const PostController = require("./controllers/PostController");

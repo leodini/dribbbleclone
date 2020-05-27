@@ -1,5 +1,6 @@
-const User = require("../models/User");
+const JWT = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
+const User = require("../models/User");
 
 module.exports = {
   async signUp(req, res) {
@@ -18,7 +19,17 @@ module.exports = {
       avatar_url,
     });
 
-    return res.json(newUser);
+    const token = JWT.sign(
+      {
+        iss: "dribllleclone",
+        sub: newUser._id,
+        iat: new Date().getTime(),
+        exp: new Date().setDate(new Date().getDate() + 30),
+      },
+      "dribllleclone"
+    );
+
+    return res.json({ token });
   },
   async signIn(req, res) {
     //todo generate a token
