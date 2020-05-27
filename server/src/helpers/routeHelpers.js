@@ -23,5 +23,10 @@ module.exports = {
       bio: Joi.string(),
       avatar: Joi.string(),
     }),
+    postSchema: Joi.object().keys({
+      title: Joi.string().required(),
+      description: Joi.string(),
+      category: Joi.string().required(),
+    }),
   },
 };

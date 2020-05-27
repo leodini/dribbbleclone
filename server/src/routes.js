@@ -31,6 +31,7 @@ routes.get("/posts", PostController.index);
 routes.post(
   "/posts",
   checkAuthentication,
+  validateBody(schemas.postSchema),
   multer(uploadConfig).single("file"),
   PostController.store
 );

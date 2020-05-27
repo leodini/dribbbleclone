@@ -1,16 +1,18 @@
 const User = require("../models/User");
-const Post = require("../models/Post");
 const bcrypt = require("bcrypt");
 
 module.exports = {
   async signUp(req, res) {
-    const { username, password, bio, email, avatar_url } = req.body;
+    const { username, password, bio, email, avatar_url } = req.value.body;
 
     const encryptedPassword = await bcrypt.hash(password, 10);
 
+    if ((await User.findOne({ username })) || (await User.findOne({ email })))
+      return res.status(403).json({ message: "user already exists" });
+
     const newUser = await User.create({
       username,
-      encryptedPassword,
+      password: encryptedPassword,
       bio,
       email,
       avatar_url,
