@@ -12,7 +12,7 @@ module.exports = {
       return res.status(400).json({ error: "Post not found" });
     }
 
-    if (targetPost.includes(user)) {
+    if (targetPost.likes.includes(user)) {
       return res.json({ message: "you already liked this post" });
     }
 
@@ -32,7 +32,7 @@ module.exports = {
       return res.status(400).json({ error: "Post not found" });
     }
 
-    if (targetComment.includes(user)) {
+    if (targetComment.likes.includes(user)) {
       return res.json({ message: "you already liked this post" });
     }
 

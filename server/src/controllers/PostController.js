@@ -1,6 +1,5 @@
 const Post = require("../models/Post");
 const User = require("../models/User");
-const Comment = require("../models/Comment");
 
 module.exports = {
   async store(req, res) {
@@ -43,12 +42,15 @@ module.exports = {
     return res.json(post);
   },
   async remove(req, res) {
-    const user = await User.findById(req.user.id);
+    const { id } = req.params;
+    const { id: userId } = req.user;
 
-    if (user) {
-      const post = await Post.findById(req.params.id);
-      await post.remove();
-      return res.send();
+    const user = await User.findById(userId);
+    const post = await Post.findById(id);
+
+    if (user.posts.includes(post.id)) {
+      await Post.findByIdAndDelete(post);
+      return res.send({ message: "post removed" });
     }
 
     return res.json({ message: "user not found" });
