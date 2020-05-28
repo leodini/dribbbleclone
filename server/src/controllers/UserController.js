@@ -6,7 +6,7 @@ signToken = (user) => {
   return JWT.sign(
     {
       iss: "dribllleclone",
-      sub: user._id,
+      sub: user.id,
       iat: new Date().getTime(),
       exp: new Date().setDate(new Date().getDate() + 30),
     },
@@ -37,8 +37,8 @@ module.exports = {
     return res.json({ token });
   },
   async signIn(req, res) {
-    //todo generate a token
-    console.log(req);
+    const token = signToken(req.user);
+    return res.json({ token });
   },
   async index(req, res) {
     const { userId } = req.params;
