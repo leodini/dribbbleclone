@@ -25,9 +25,18 @@ module.exports = {
 
     const comments = await Comment.find({ project: projectId })
       .populate("author")
-      .select("project")
       .exec();
 
     return res.json(comments);
+  },
+  async update(req, res) {
+    const { commentId } = req.params;
+    const { content } = req.body;
+
+    const updatedComment = await Comment.findByIdAndUpdate(commentId, {
+      content,
+    });
+
+    return res.json(updatedComment);
   },
 };

@@ -21,7 +21,7 @@ module.exports = {
       title,
       description,
       category: categoryArray,
-      author: user_id,
+      author: req.user.id,
     });
 
     user.posts.push(newPost._id);
@@ -33,6 +33,14 @@ module.exports = {
   async index(req, res) {
     const posts = await Post.find().populate("author comments").exec();
     return res.json(posts);
+  },
+  async uniquePost(req, res) {
+    const { projectId } = req.params;
+    const post = await Post.findById(projectId)
+      .deepPopulate("author comments.author")
+      .exec();
+
+    return res.json(post);
   },
   async remove(req, res) {
     const user = await User.findById(req.user.id);

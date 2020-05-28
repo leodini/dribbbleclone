@@ -20,19 +20,25 @@ routes.post("/signin", passportLocal, UserController.signIn);
 routes.get("/user/:userId", UserController.index);
 
 //like routes
-routes.post("/like/:projectId", passportJwt, LikeController.create);
-routes.get("/like/count/:projectId", LikeController.index);
+routes.post("/like/:id", passportJwt, LikeController.create);
+routes.get("/like/count/:id", LikeController.index);
 
 //comment routes
 routes.post("/comment/:projectId", passportJwt, CommentController.create);
 routes.get("/comment/:projectId", CommentController.index);
+routes.post(
+  "/comment/:commentId/update",
+  passportJwt,
+  CommentController.update
+);
 
 //post routes
 routes.get("/posts", PostController.index);
+routes.get("/posts/:projectId", PostController.uniquePost);
 routes.post(
   "/posts",
   passportJwt,
-  validateBody(schemas.postSchema),
+  // validateBody(schemas.postSchema),
   multer(uploadConfig).single("file"),
   PostController.store
 );
