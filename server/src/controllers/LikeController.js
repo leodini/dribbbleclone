@@ -4,17 +4,16 @@ const Post = require("../models/Post");
 module.exports = {
   async create(req, res) {
     const { projectId } = req.params;
-    const { user_id } = req.headers;
 
     const likeExists = await Like.exists({
       post: projectId,
-      author: user_id,
+      author: req.user.id,
     });
 
     if (!likeExists) {
       const newLike = await Like.create({
         post: projectId,
-        author: user_id,
+        author: req.user.id,
       });
 
       const post = await Post.findById(projectId);

@@ -5,9 +5,8 @@ const Comment = require("../models/Comment");
 module.exports = {
   async store(req, res) {
     const { title, description, category } = req.body;
-    const { user_id } = req.headers;
 
-    const user = await User.findById(user_id);
+    const user = await User.findById(req.user.id);
 
     if (!user) {
       return res.status(400).json({ error: "user does not exist" });
@@ -36,9 +35,7 @@ module.exports = {
     return res.json(posts);
   },
   async remove(req, res) {
-    const { user_id } = req.headers;
-
-    const user = await User.findById(user_id);
+    const user = await User.findById(req.user.id);
 
     if (user) {
       const post = await Post.findById(req.params.id);

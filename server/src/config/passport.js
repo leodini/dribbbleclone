@@ -57,5 +57,3 @@ passport.deserializeUser(async (id, done) => {
   let user = await User.findById(id);
   return done(null, user);
 });
-
-// module.exports = initialize;
