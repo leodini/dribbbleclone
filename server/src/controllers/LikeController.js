@@ -1,55 +1,46 @@
-const Like = require("../models/Like");
 const Post = require("../models/Post");
 const Comment = require("../models/Comment");
 
 module.exports = {
-  async create(req, res) {
+  async likePost(req, res) {
     const { id } = req.params;
+    const user = req.user;
 
-    const itsAPost = await Post.findById(id);
-    const itsAComment = await Post.findById(id);
+    const targetPost = await Post.findById(id);
 
-    const likeExistsAndItsAPost = await Like.exists({
-      post: id,
-      author: req.user.id,
-    });
-
-    const likeExistsAndItsAComment = await Comment.exists({
-      author: req.user.id,
-      comment: id,
-    });
-
-    if (itsAPost && !likeExistsAndItsAPost) {
-      const newLike = await Like.create({
-        post: id,
-        author: req.user.id,
-      });
-
-      const post = await Post.findById(id);
-
-      post.likes.push(newLike);
-
-      await post.save();
-
-      return res.json(post);
+    if (!targetPost) {
+      return res.status(400).json({ error: "Post not found" });
     }
 
-    if (itsAComment && !likeExistsAndItsAComment) {
-      const newLike = await Like.create({
-        comment: id,
-        author: req.user.id,
-      });
-
-      const comment = await Comment.findById(id);
-
-      comment.likes.push(newLike);
-
-      await comment.save();
-
-      return res.json(comment);
+    if (targetPost.includes(user)) {
+      return res.json({ message: "you already liked this post" });
     }
 
-    return res.json({ message: "already liked" });
+    targetPost.likes.push(user._id);
+
+    await targetPost.save();
+
+    return res.json(targetPost);
+  },
+  async likeComment(req, res) {
+    const { id } = req.params;
+    const user = req.user;
+
+    const targetComment = await Comment.findById(id);
+
+    if (!targetComment) {
+      return res.status(400).json({ error: "Post not found" });
+    }
+
+    if (targetComment.includes(user)) {
+      return res.json({ message: "you already liked this post" });
+    }
+
+    targetComment.likes.push(user._id);
+
+    await targetComment.save();
+
+    return res.json(targetComment);
   },
   async index(req, res) {
     const { id } = req.params;

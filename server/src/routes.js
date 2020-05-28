@@ -20,7 +20,8 @@ routes.post("/signin", passportLocal, UserController.signIn);
 routes.get("/user/:userId", UserController.index);
 
 //like routes
-routes.post("/like/:id", passportJwt, LikeController.create);
+routes.post("/like/:id/post", passportJwt, LikeController.likePost);
+routes.post("/like/:id/comment", passportJwt, LikeController.likeComment);
 routes.get("/like/count/:id", LikeController.index);
 
 //comment routes
