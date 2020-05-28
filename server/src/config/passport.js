@@ -1,28 +1,52 @@
-const LocalStrategy = require("passport-local").Strategy;
+const JwtStrategy = require("passport-jwt").Strategy;
+const localStrategy = require("passport-local").Strategy;
 const passport = require("passport");
-const User = require("../models/User");
 const bcrypt = require("bcrypt");
+const { ExtractJwt } = require("passport-jwt");
+const User = require("../models/User");
 
-const authenticateUser = async (username, password, done) => {
-  const user = User.findOne({ username: username });
-  console.log(user);
-  if (!user) {
-    return done(null, false, { message: "no user found" });
-  }
+const authenticateToken = async (payload, done) => {
+  const user = await User.findById(payload.sub);
   try {
-    if (await bcrypt.compare(password, user.password)) {
-      return done(null, user);
-    } else {
-      return done(null, false, { message: "password incorrect" });
+    if (!user) {
+      return done(null, false, { message: "no user found" });
     }
+    done(null, user);
   } catch (err) {
-    return done(err);
+    done(err, false);
   }
 };
 
 passport.use(
-  new LocalStrategy(
-    { usernameField: "username", passwordField: "password" },
+  new JwtStrategy(
+    {
+      jwtFromRequest: ExtractJwt.fromHeader("authorization"),
+      secretOrKey: process.env.TOKEN_SECRET,
+    },
+    authenticateToken
+  )
+);
+
+const authenticateUser = async (username, password, done) => {
+  const user = await User.findOne({ username });
+  try {
+    if (!user) {
+      return done(null, false);
+    }
+    if (!(await bcrypt.compare(password, user.password))) {
+      return done(null, false);
+    }
+    done(null, user);
+  } catch (err) {
+    done(err, false);
+  }
+};
+
+passport.use(
+  new localStrategy(
+    {
+      usernameField: "username",
+    },
     authenticateUser
   )
 );

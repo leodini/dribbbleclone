@@ -4,29 +4,11 @@ const mongoose = require("mongoose");
 const path = require("path");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
-// const passport = require("passport");
-// const flash = require("express-flash");
-// const session = require("express-session");
 const routes = require("./routes");
-// require("./config/passport");
 
 const app = express();
 app.use(morgan("dev"));
 app.use(bodyParser.json());
-
-// app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(flash());
-
-// app.use(
-//   session({
-//     secret: process.env.SESSION_SECRET,
-//     resave: false,
-//     saveUninitialized: false,
-//   })
-// );
-
-// app.use(passport.initialize());
-// app.use(passport.session());
 
 app.use(
   "/files",
