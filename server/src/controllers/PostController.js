@@ -30,7 +30,10 @@ module.exports = {
     return res.json(newPost);
   },
   async index(req, res) {
-    const posts = await Post.find().populate("author comments").exec();
+    const posts = await Post.find()
+      .sort({ likes: "desc" })
+      .populate("author comments")
+      .exec();
     return res.json(posts);
   },
   async uniquePost(req, res) {
@@ -59,11 +62,19 @@ module.exports = {
     const { search } = req.params;
 
     const regex = new RegExp(search, "i"); // 'i' makes it case insensitive
-    return Post.find({ category: regex }, function (err, query) {
-      if (err) {
-        return res.json({ err });
+    const searchResults = Post.find(
+      { category: regex },
+      // { title: regex },
+      function (err, query) {
+        if (err) {
+          return res.json({ err });
+        }
+        // const populated = query.populate("author").exec();
+        return res.json(query);
       }
-      return res.json(query);
-    });
+    );
+    console.log(searchResults);
+    searchResults.populate("author");
+    // return res.json(searchResults);
   },
 };
