@@ -30,6 +30,15 @@ module.exports = {
     return res.json(newPost);
   },
   async index(req, res) {
+    const { order_by } = req.query;
+
+    if (order_by === "new") {
+      const posts = await Post.find()
+        .sort({ createdAt: "desc" })
+        .populate("author comments")
+        .exec();
+      return res.json(posts);
+    }
     const posts = await Post.find()
       .sort({ likes: "desc" })
       .populate("author comments")
@@ -59,22 +68,11 @@ module.exports = {
     return res.json({ message: "user not found" });
   },
   async searchPost(req, res) {
-    const { search } = req.params;
-
+    const { search } = req.query;
+    console.log(search);
     const regex = new RegExp(search, "i"); // 'i' makes it case insensitive
-    const searchResults = Post.find(
-      { category: regex },
-      // { title: regex },
-      function (err, query) {
-        if (err) {
-          return res.json({ err });
-        }
-        // const populated = query.populate("author").exec();
-        return res.json(query);
-      }
-    );
-    console.log(searchResults);
-    searchResults.populate("author");
-    // return res.json(searchResults);
+    return Post.find({ category: regex }, function (err, query) {
+      return res.json(query);
+    });
   },
 };
