@@ -55,4 +55,15 @@ module.exports = {
 
     return res.json({ message: "user not found" });
   },
+  async searchPost(req, res) {
+    const { search } = req.params;
+
+    const regex = new RegExp(search, "i"); // 'i' makes it case insensitive
+    return Post.find({ category: regex }, function (err, query) {
+      if (err) {
+        return res.json({ err });
+      }
+      return res.json(query);
+    });
+  },
 };

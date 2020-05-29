@@ -43,6 +43,7 @@ routes.post(
   multer(uploadConfig).single("file"),
   PostController.store
 );
+routes.get("/posts/search/:search", PostController.searchPost);
 routes.delete("/posts/:id", passportJwt, PostController.remove);
 
 module.exports = routes;
