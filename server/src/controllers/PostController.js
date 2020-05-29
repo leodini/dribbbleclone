@@ -73,6 +73,8 @@ module.exports = {
     const regex = new RegExp(search, "i"); // 'i' makes it case insensitive
     return Post.find({ category: regex }, function (err, query) {
       return res.json(query);
-    });
+    })
+      .populate("author")
+      .exec();
   },
 };

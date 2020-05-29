@@ -48,4 +48,17 @@ module.exports = {
       .execPopulate();
     return res.json(user);
   },
+  async updateUser(req, res) {
+    const user = req.user;
+    const { filename } = req.file;
+    const { bio } = req.body;
+
+    if (filename && bio) {
+      const updatedUser = await User.findByIdAndUpdate(user._id, {
+        filename,
+        bio,
+      });
+      return res.json(updatedUser);
+    }
+  },
 };

@@ -37,6 +37,8 @@ module.exports = {
       content,
     });
 
+    await updatedComment.save();
+
     return res.json(updatedComment);
   },
 };
