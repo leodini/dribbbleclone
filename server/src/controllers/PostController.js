@@ -10,7 +10,7 @@ module.exports = {
     if (!user) {
       return res.status(400).json({ error: "user does not exist" });
     }
-
+    // newItem.img.data = fs.readFileSync(req.files.userPhoto.path);
     const categoryArray = category
       .split(",")
       .map((category) => category.trim());

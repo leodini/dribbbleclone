@@ -5,10 +5,7 @@ const PostSchema = new mongoose.Schema(
   {
     title: String,
     description: String,
-    image: {
-      type: String,
-      required: true,
-    },
+    image: String,
     category: [String],
     author: {
       type: mongoose.Schema.Types.ObjectId,
@@ -29,6 +26,10 @@ const PostSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+
+PostSchema.virtual("image_url").get(function () {
+  return `localhost:3333/files/${this.image}`;
+});
 
 PostSchema.plugin(deepPopulate);
 

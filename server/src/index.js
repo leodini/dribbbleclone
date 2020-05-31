@@ -8,6 +8,7 @@ const routes = require("./routes");
 const cors = require("cors");
 
 const app = express();
+app.use(cors());
 app.use(morgan("dev"));
 app.use(bodyParser.json());
 
@@ -27,6 +28,5 @@ mongoose.connect(
 
 const PORT = process.env.PORT || 3131;
 
-app.use(cors());
 app.use(routes);
 app.listen(PORT, () => console.log(`server running on port ${PORT}`));
