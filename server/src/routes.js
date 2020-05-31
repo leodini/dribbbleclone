@@ -18,6 +18,12 @@ const passportJwt = passport.authenticate("jwt", { session: false });
 routes.post("/signup", validateBody(schemas.authSchema), UserController.signUp);
 routes.post("/signin", passportLocal, UserController.signIn);
 routes.get("/user/:userId", UserController.index);
+routes.post(
+  "/user",
+  passportJwt,
+  multer(uploadConfig).single("file"),
+  UserController.updateUser
+);
 
 //like routes
 routes.post("/like/:id/post", passportJwt, LikeController.likePost);

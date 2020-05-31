@@ -55,7 +55,7 @@ module.exports = {
 
     if (filename && bio) {
       const updatedUser = await User.findByIdAndUpdate(user._id, {
-        filename,
+        avatar: filename,
         bio,
       });
       return res.json(updatedUser);
