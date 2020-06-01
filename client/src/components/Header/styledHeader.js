@@ -18,6 +18,7 @@ export const SignInButton = styled.button`
   color: #6e6d7a;
   height: 40px;
   border: none;
+  font-size: 14px;
   font-weight: 500;
   font-family: "Roboto", sans-serif;
   border-radius: 8px;
@@ -26,12 +27,17 @@ export const SignInButton = styled.button`
 export const SignUpButton = styled.button`
   cursor: pointer;
   padding: 10px 16px;
-  margin: 8px;
+  /* margin: 8px; */
   height: 40px;
+  font-size: 14px;
   font-weight: 500;
-  background: #ea4c89;
+  background: #6c63ff;
   border: none;
   color: #fff;
+  width: 100px;
   font-family: "Roboto", sans-serif;
   border-radius: 8px;
+  :hover {
+    background-color: #63a9ff;
+  }
 `;
