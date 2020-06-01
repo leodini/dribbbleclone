@@ -4,3 +4,5 @@
 /server/tmp
 /server/tmp/uploads
 /server/tmp/uploads/*
+/client/node_modules
+/client/.gitignore

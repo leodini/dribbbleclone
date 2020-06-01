@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import api from "./api";
-import NewPost from "./components/newPost";
+import NewPost from "./components/NewPost";
+import Header from "./components/Header/Header";
 import "./styles.css";
 
 function App() {
@@ -16,7 +17,8 @@ function App() {
   }, []);
 
   return (
-    <div className="container">
+    <div>
+      <Header />
       {data.map((post) => (
         <div key={post._id} className="container">
           <img src={post.image_url} width={100} alt={post.title} />
