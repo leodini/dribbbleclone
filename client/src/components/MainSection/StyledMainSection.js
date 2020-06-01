@@ -1,11 +1,12 @@
 import styled from "styled-components";
 
 export const SectionContainer = styled.div`
-  height: 400px;
+  height: 500px;
   width: 100%;
   background-color: #f9f8fd;
   display: flex;
   align-items: center;
+  margin-bottom: 12px;
 `;
 
 export const MainText = styled.h1`

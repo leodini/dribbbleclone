@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from "react";
-import api from "../api";
-import camera from "../assets/camera.png";
+import api from "../../api";
+import camera from "../../assets/camera.png";
 
 function NewPost() {
   const [thumbnail, setThumbnail] = useState("");
@@ -15,14 +15,14 @@ function NewPost() {
   async function handleSubmit(event) {
     event.preventDefault();
 
-    const data = new FormData();
+    const formData = {
+      title,
+      category,
+      description,
+      image_url: thumbnail,
+    };
 
-    data.append("image_url", thumbnail);
-    data.append("title", title);
-    data.append("category", category);
-    data.append("description", description);
-    console.log(thumbnail);
-    await api.post("/posts", data, {
+    await api.post("/posts", formData, {
       headers: {
         Authorization:
           "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJkcmlibGxsZWNsb25lIiwic3ViIjoiNWVjZjIwMWY2YmVjNTU3MjJhOWUwMzQ5IiwiaWF0IjoxNTkwNjMyNDc5MjYwLCJleHAiOjE1OTMyMjQ0NzkyNjF9.1YZwWvqLAlXDERlEjRf80zxKZ4jS6gl7uBCKHtWHFAI",

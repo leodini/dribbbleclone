@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import api from "./api";
-import NewPost from "./components/NewPost";
+import NewPost from "./components/NewPost/NewPost";
 import Header from "./components/Header/Header";
 import MainSection from "./components/MainSection/MainSection";
+import Posts from "./components/Posts/Posts";
 import "./styles.css";
 
 function App() {
@@ -21,13 +22,7 @@ function App() {
     <div>
       <Header />
       <MainSection />
-      {data.map((post) => (
-        <div key={post._id} className="container">
-          <img src={post.image_url} width={100} alt={post.title} />
-          <span>{post.likes.length}</span>
-          <span>{post.comments.length}</span>
-        </div>
-      ))}
+      <Posts data={data} />
       {/* <NewPost /> */}
     </div>
   );

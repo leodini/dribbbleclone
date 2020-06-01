@@ -15,7 +15,7 @@ const MainSection = () => {
       <TextContainer>
         <MainText>Discover the world’s top designers & creatives</MainText>
         <Text>
-          Dribbble is the leading destination to find & showcase creative work
+          Dribbbleo is the leading destination to find & showcase creative work
           and home to the world's best design professionals.
         </Text>
         <SignUpButton>Sign up</SignUpButton>
