@@ -41,13 +41,15 @@ export const Image = styled.img`
 
 export const FormSection = styled.section`
   width: 70%;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const Form = styled.form`
   width: 30%;
   margin: auto;
   display: flex;
-  margin-top: 25%;
+  margin-top: 22%;
   flex-direction: column;
 `;
 
@@ -86,6 +88,10 @@ export const Button = styled.button`
   color: #fff;
   font-size: sans-serif;
   margin-top: 22px;
+  transition: all 0.2s;
+  :hover {
+    background-color: #63a9ff;
+  }
 `;
 
 export const SigninText = styled.h1`
@@ -93,4 +99,14 @@ export const SigninText = styled.h1`
   font-size: 22px;
   font-weight: 700;
   margin-bottom: 22px;
+`;
+
+export const AuthNav = styled.div`
+  width: 100%;
+  /* align-items: flex-end; */
+`;
+
+export const AuthNavText = styled.p`
+  text-align: right;
+  margin: 8px;
 `;

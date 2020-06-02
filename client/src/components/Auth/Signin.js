@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import chill from "../../assets/chill.jpg";
 import {
   Page,
@@ -12,6 +13,8 @@ import {
   Label,
   Input,
   Button,
+  AuthNav,
+  AuthNavText,
   SigninText,
 } from "./StyledAuth";
 
@@ -37,6 +40,14 @@ const Signin = () => {
         <Image src={chill} alt="dribbbleo" />
       </ImageSection>
       <FormSection>
+        <AuthNav>
+          <AuthNavText>
+            Not a member?{" "}
+            <Link to="/signup" style={{ textDecoration: "none" }}>
+              Sign up now
+            </Link>
+          </AuthNavText>
+        </AuthNav>
         <Form>
           <SigninText>Sign in to Dribbbleo</SigninText>
           <Label htmlFor="username">Username</Label>
