@@ -28,10 +28,10 @@ const Signin = () => {
 
   return (
     <Page>
-      <ImageSection>
+      <ImageSection background={"#f1cdd7"}>
         <Header>
-          <MainText>dribbbleo</MainText>
-          <Text>
+          <MainText color={"#865c6c"}>dribbbleo</MainText>
+          <Text color={"#865c6c"}>
             Discover the world’s
             <br /> top Designers & <br />
             Creatives.

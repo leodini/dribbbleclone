@@ -16,19 +16,21 @@ export const ImageSection = styled.section`
   display: flex;
   flex-direction: column;
   height: 100%;
-  background-color: #f1cdd7;
+  background-color: ${(props) => props.background};
   width: 28%;
 `;
 
 export const MainText = styled.h1`
-  color: #865c6c;
+  /* color: #865c6c; */
+  color: ${(props) => props.color};
   font-size: 18px;
   margin-bottom: 22px;
   font-family: sans-serif;
 `;
 
 export const Text = styled.p`
-  color: #865c6c;
+  /* color: #865c6c; */
+  color: ${(props) => props.color};
   font-size: 28px;
   padding-right: 30px;
   font-family: sans-serif;

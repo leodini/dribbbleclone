@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import chill from "../../assets/chill.jpg";
+import signup from "../../assets/signup.png";
 import {
   Page,
   ImageSection,
@@ -29,16 +29,16 @@ const Signup = () => {
 
   return (
     <Page>
-      <ImageSection>
+      <ImageSection background={"#f2d184"}>
         <Header>
-          <MainText>dribbbleo</MainText>
-          <Text>
+          <MainText color={"#866118"}>dribbbleo</MainText>
+          <Text color={"#866118"}>
             Discover the world’s
             <br /> top Designers & <br />
             Creatives.
           </Text>
         </Header>
-        <Image src={chill} alt="dribbbleo" />
+        <Image src={signup} alt="dribbbleo" />
       </ImageSection>
       <FormSection>
         <AuthNav>
