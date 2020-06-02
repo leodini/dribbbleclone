@@ -2,9 +2,8 @@ import styled from "styled-components";
 
 export const PostsContainer = styled.div`
   display: flex;
-  width: 100%;
-  margin: 10px;
-  /* height: 700px; */
+  width: 90%;
+  margin: auto;
 `;
 
 export const PostContainer = styled.div`

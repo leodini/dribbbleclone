@@ -35,10 +35,13 @@ const Posts = ({ data }) => {
                 <Author>{post.author.username}</Author>
               </AuthorContainer>
               <div className="">
-                <FaRegCommentAlt style={{ color: "#404050" }}>
+                <FaRegCommentAlt
+                  style={{ color: "#404050", marginRight: "3px" }}
+                  size={16}
+                >
                   <span>{post.comments.length}</span>
                 </FaRegCommentAlt>
-                <AiOutlineHeart style={{ color: "#404050" }}>
+                <AiOutlineHeart style={{ color: "#404050" }} size={18}>
                   <span>{post.likes.length}</span>
                 </AiOutlineHeart>
               </div>
