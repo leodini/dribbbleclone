@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   SectionContainer,
   Text,
@@ -18,7 +19,9 @@ const MainSection = () => {
           Dribbbleo is the leading destination to find & showcase creative work
           and home to the world's best design professionals.
         </Text>
-        <SignUpButton>Sign up</SignUpButton>
+        <Link to="/signup">
+          <SignUpButton>Sign up</SignUpButton>
+        </Link>
       </TextContainer>
       <Image src={art} alt="art" />
     </SectionContainer>
