@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-// #f1cdd7
 export const Page = styled.div`
   width: 100vw;
   display: flex;
@@ -21,7 +20,6 @@ export const ImageSection = styled.section`
 `;
 
 export const MainText = styled.h1`
-  /* color: #865c6c; */
   color: ${(props) => props.color};
   font-size: 18px;
   margin-bottom: 22px;
@@ -29,7 +27,6 @@ export const MainText = styled.h1`
 `;
 
 export const Text = styled.p`
-  /* color: #865c6c; */
   color: ${(props) => props.color};
   font-size: 28px;
   padding-right: 30px;
@@ -68,7 +65,7 @@ export const Input = styled.input`
   border: none;
   padding: 6px;
   margin-bottom: 10px;
-  transition: all 0.3s;
+  transition: all 0.3s ease;
   height: 35px;
   :focus {
     border: 2px solid #f1cdd7;
@@ -86,6 +83,8 @@ export const Button = styled.button`
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
+  border-radius: 8px;
+  width: 160px;
   background-color: #6c63ff;
   color: #fff;
   font-size: sans-serif;

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import pageTitle from "../../utils/title";
 import chill from "../../assets/chill.jpg";
 import {
   Page,
@@ -23,7 +24,7 @@ const Signin = () => {
   const [password, setPassword] = useState("");
 
   useEffect(() => {
-    window.document.title = "Sign In | dribbbleo";
+    pageTitle("Sign In | dribbbleo");
   }, []);
 
   return (

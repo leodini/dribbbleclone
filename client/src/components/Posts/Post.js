@@ -4,7 +4,6 @@ import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import {
   InfoContainer,
   PostContainer,
-  PostsContainer,
   Image,
   Author,
   AuthorContainer,

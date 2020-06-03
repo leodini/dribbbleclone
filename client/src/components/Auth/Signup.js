@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import pageTitle from "../../utils/title";
 import signup from "../../assets/signup.png";
 import {
   Page,
@@ -24,7 +25,7 @@ const Signup = () => {
   const [email, setEmail] = useState("");
 
   useEffect(() => {
-    window.document.title = "Sign Up | dribbbleo";
+    pageTitle("Sign Up | dribbbleo");
   }, []);
 
   return (
