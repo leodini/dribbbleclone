@@ -14,10 +14,10 @@ body,
   min-height: 100%;
 }
 
-body {
+/* body {
   /* background: #000 url("./assets/background.jpg") no-repeat; */
-  background-size: cover;
-  -webkit-font-smoothing: antialiased !important;
+/* background-size: cover; */
+/* -webkit-font-smoothing: antialiased !important;
 }
 
 body,
@@ -115,4 +115,4 @@ label#thumbnail.has-thumbnail {
 
 label#thumbnail.has-thumbnail img {
   display: none;
-}
+} */

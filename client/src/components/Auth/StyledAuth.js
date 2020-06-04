@@ -21,16 +21,16 @@ export const ImageSection = styled.section`
 
 export const MainText = styled.h1`
   color: ${(props) => props.color};
-  font-size: 18px;
+  font-size: 28px;
   margin-bottom: 22px;
-  font-family: sans-serif;
+  font-family: Vibur, sans-serif;
 `;
 
 export const Text = styled.p`
   color: ${(props) => props.color};
-  font-size: 28px;
+  font-size: 34px;
   padding-right: 30px;
-  font-family: sans-serif;
+  font-family: Roboto, sans-serif;
   font-weight: 700;
 `;
 
@@ -56,6 +56,7 @@ export const Label = styled.label`
   color: #0d0c22;
   font-size: 16px;
   font-weight: 700;
+  font-family: Roboto, sans-serif;
   margin-bottom: 5px;
 `;
 
@@ -82,12 +83,12 @@ export const Button = styled.button`
   border: none;
   font-size: 16px;
   font-weight: 600;
+  font-family: Roboto, sans-serif;
   cursor: pointer;
   border-radius: 8px;
   width: 160px;
   background-color: #6c63ff;
   color: #fff;
-  font-size: sans-serif;
   margin-top: 22px;
   transition: all 0.2s;
   :hover {
@@ -98,6 +99,7 @@ export const Button = styled.button`
 export const SigninText = styled.h1`
   color: #0d0c22;
   font-size: 22px;
+  font-family: Roboto, sans-serif;
   font-weight: 700;
   margin-bottom: 22px;
 `;
@@ -110,4 +112,5 @@ export const AuthNav = styled.div`
 export const AuthNavText = styled.p`
   text-align: right;
   margin: 8px;
+  font-family: Roboto, sans-serif;
 `;

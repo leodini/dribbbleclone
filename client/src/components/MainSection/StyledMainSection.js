@@ -12,7 +12,7 @@ export const SectionContainer = styled.div`
 export const MainText = styled.h1`
   color: #0d0c22;
   font-size: 48px;
-  font-family: sans-serif;
+  font-family: Roboto, sans-serif;
   margin: 10px auto;
   width: 750px;
 `;
@@ -20,7 +20,7 @@ export const MainText = styled.h1`
 export const Text = styled.p`
   color: #0d0c22;
   font-size: 18px;
-  font-family: sans-serif;
+  font-family: Roboto, sans-serif;
   margin-top: 10px;
   margin-bottom: 16px;
   width: 750px;

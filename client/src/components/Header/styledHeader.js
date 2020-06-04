@@ -8,6 +8,10 @@ export const HeaderContainer = styled.div`
   justify-content: space-between;
   border-bottom: 1px solid #f6f6f6;
   align-items: center;
+  h2 {
+    font-family: Vibur, sans-serif;
+    margin-left: 12px;
+  }
 `;
 
 export const SignInButton = styled.button`
@@ -20,7 +24,7 @@ export const SignInButton = styled.button`
   border: none;
   font-size: 14px;
   font-weight: 500;
-  font-family: "Roboto", sans-serif;
+  font-family: Roboto, sans-serif;
   border-radius: 8px;
 `;
 
@@ -35,7 +39,7 @@ export const SignUpButton = styled.button`
   border: none;
   color: #fff;
   width: 100px;
-  font-family: "Roboto", sans-serif;
+  font-family: Roboto, sans-serif;
   border-radius: 8px;
   :hover {
     background-color: #63a9ff;
