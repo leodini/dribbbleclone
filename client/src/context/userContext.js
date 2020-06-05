@@ -4,12 +4,15 @@ import { userReducer } from "./reducer";
 
 export const UserContext = createContext();
 
+const INITIAL_STATE = {
+  username: "",
+  token: "",
+};
+
 const UserState = ({ children }) => {
-  const [userState, dispatch] = useReducer(userReducer, {});
+  const [userState, dispatch] = useReducer(userReducer, INITIAL_STATE);
   return (
-    <UserContext.Provider value={{ user: userState }}>
-      {children}
-    </UserContext.Provider>
+    <UserContext.Provider value={userState}>{children}</UserContext.Provider>
   );
 };
 

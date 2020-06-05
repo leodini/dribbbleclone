@@ -18,6 +18,8 @@ import {
   AuthNav,
   AuthNavText,
 } from "./StyledAuth";
+import JWT from "../../helpers/jwt";
+import api from "../../api";
 
 const Signup = () => {
   const [username, setUsername] = useState("");
@@ -27,6 +29,17 @@ const Signup = () => {
   useEffect(() => {
     pageTitle("Sign Up | dribbbleo");
   }, []);
+
+  const signup = async (e) => {
+    e.preventDefault();
+    const newUser = { username, password, email };
+
+    const {
+      data: { token },
+    } = await api.post("/signup", newUser);
+
+    console.log(JWT.parseJwt(token));
+  };
 
   return (
     <Page>
@@ -41,7 +54,7 @@ const Signup = () => {
         </Header>
         <Image src={signup} alt="dribbbleo" />
       </ImageSection>
-      <FormSection>
+      <FormSection onSubmit={signup}>
         <AuthNav>
           <AuthNavText>
             Already a member?{" "}
@@ -73,7 +86,7 @@ const Signup = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <Button>Create Account</Button>
+          <Button type="submit">Create Account</Button>
         </Form>
       </FormSection>
     </Page>
