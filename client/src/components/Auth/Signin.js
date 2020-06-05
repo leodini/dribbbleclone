@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState, useContext } from "react";
+import { Link, useHistory } from "react-router-dom";
 import pageTitle from "../../utils/title";
 import chill from "../../assets/chill.jpg";
 import {
@@ -19,8 +19,7 @@ import {
   SigninText,
   Error,
 } from "./StyledAuth";
-import api from "../../api";
-import JWT from "../../helpers/jwt";
+import { UserContext } from "../../context/userContext";
 
 const Signin = () => {
   const [username, setUsername] = useState("");
@@ -29,25 +28,17 @@ const Signin = () => {
     show: false,
     msg: "username or email already in use",
   });
+  const context = useContext(UserContext);
+  const history = useHistory();
 
   useEffect(() => {
     pageTitle("Sign In | dribbbleo");
   }, []);
 
-  const signin = async (e) => {
+  const signin = (e) => {
     e.preventDefault();
-
-    const form = { username, password };
-
-    try {
-      const {
-        data: { token },
-      } = await api.post("/signin", form);
-
-      JWT.storeJwt(token);
-    } catch (err) {
-      setError({ ...error, show: true });
-    }
+    context.signin(username, password);
+    history.push("/");
   };
 
   return (
@@ -80,12 +71,14 @@ const Signin = () => {
             type="text"
             id="username"
             value={username}
+            required
             onChange={(e) => setUsername(e.target.value)}
           />
           <Label htmlFor="password">Password</Label>
           <Input
             type="password"
             id="password"
+            required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />

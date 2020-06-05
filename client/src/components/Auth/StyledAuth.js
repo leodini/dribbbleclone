@@ -92,7 +92,7 @@ export const Button = styled.button`
   margin-top: 22px;
   transition: all 0.2s;
   :hover {
-    background-color: #63a9ff;
+    background-color: #cfaeff;
   }
 `;
 

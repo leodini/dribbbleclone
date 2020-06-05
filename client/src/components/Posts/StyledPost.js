@@ -25,6 +25,8 @@ export const Image = styled.img`
 
 export const Author = styled.p`
   font-size: 14px;
+  font-family: Roboto;
+  font-weight: 600;
   color: #404050;
 `;
 

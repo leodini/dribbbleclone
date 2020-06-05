@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import pageTitle from "../../utils/title";
 import signupImage from "../../assets/signup.png";
 import {
@@ -31,6 +31,8 @@ const Signup = () => {
     msg: "username or email already in use",
   });
 
+  const history = useHistory();
+
   useEffect(() => {
     pageTitle("Sign Up | dribbbleo");
   }, []);
@@ -41,9 +43,11 @@ const Signup = () => {
     try {
       const {
         data: { token },
-      } = await api.post("/sinup", newUser);
+      } = await api.post("/signup", newUser);
       JWT.storeJwt(token);
+      history.push("/");
     } catch (err) {
+      console.log(err);
       setError({ ...error, show: true });
     }
   };
@@ -78,6 +82,7 @@ const Signup = () => {
             type="text"
             id="username"
             value={username}
+            required
             onChange={(e) => setUsername(e.target.value)}
           />
           <Label htmlFor="email">Email</Label>
@@ -85,6 +90,7 @@ const Signup = () => {
             type="text"
             id="email"
             value={email}
+            required
             onChange={(e) => setEmail(e.target.value)}
           />
           <Label htmlFor="password">Password</Label>
@@ -92,6 +98,7 @@ const Signup = () => {
             type="password"
             id="password"
             value={password}
+            required
             onChange={(e) => setPassword(e.target.value)}
           />
           <Button type="submit">Create Account</Button>
