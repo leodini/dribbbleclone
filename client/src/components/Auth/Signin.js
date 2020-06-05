@@ -17,15 +17,38 @@ import {
   AuthNav,
   AuthNavText,
   SigninText,
+  Error,
 } from "./StyledAuth";
+import api from "../../api";
+import JWT from "../../helpers/jwt";
 
 const Signin = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState({
+    show: false,
+    msg: "username or email already in use",
+  });
 
   useEffect(() => {
     pageTitle("Sign In | dribbbleo");
   }, []);
+
+  const signin = async (e) => {
+    e.preventDefault();
+
+    const form = { username, password };
+
+    try {
+      const {
+        data: { token },
+      } = await api.post("/signin", form);
+
+      JWT.storeJwt(token);
+    } catch (err) {
+      setError({ ...error, show: true });
+    }
+  };
 
   return (
     <Page>
@@ -40,7 +63,7 @@ const Signin = () => {
         </Header>
         <Image src={chill} alt="dribbbleo" />
       </ImageSection>
-      <FormSection>
+      <FormSection onSubmit={signin}>
         <AuthNav>
           <AuthNavText>
             Not a member?{" "}
@@ -51,6 +74,7 @@ const Signin = () => {
         </AuthNav>
         <Form>
           <SigninText>Sign in to Dribbbleo</SigninText>
+          {error.show ? <Error>{error.msg}</Error> : null}
           <Label htmlFor="username">Username</Label>
           <Input
             type="text"
@@ -65,7 +89,7 @@ const Signin = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <Button>Sign in</Button>
+          <Button type="submit">Sign in</Button>
         </Form>
       </FormSection>
     </Page>

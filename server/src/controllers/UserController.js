@@ -18,7 +18,6 @@ module.exports = {
   async signUp(req, res) {
     const { username, password, bio, email, avatar } = req.value.body;
 
-    // const encryptedPassword = await bcrypt.hash(password, bcrypt.genSalt(10));
     const encryptedPassword = await bcrypt.hash(password, 10);
 
     if ((await User.findOne({ username })) || (await User.findOne({ email })))

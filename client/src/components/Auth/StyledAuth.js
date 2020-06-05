@@ -114,3 +114,9 @@ export const AuthNavText = styled.p`
   margin: 8px;
   font-family: Roboto, sans-serif;
 `;
+
+export const Error = styled.span`
+  color: red;
+  font-family: Roboto;
+  margin-bottom: 3px;
+`;

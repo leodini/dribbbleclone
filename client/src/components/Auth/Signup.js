@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import pageTitle from "../../utils/title";
-import signup from "../../assets/signup.png";
+import signupImage from "../../assets/signup.png";
 import {
   Page,
   ImageSection,
@@ -16,6 +16,7 @@ import {
   Button,
   SigninText,
   AuthNav,
+  Error,
   AuthNavText,
 } from "./StyledAuth";
 import JWT from "../../helpers/jwt";
@@ -25,6 +26,10 @@ const Signup = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  const [error, setError] = useState({
+    show: false,
+    msg: "username or email already in use",
+  });
 
   useEffect(() => {
     pageTitle("Sign Up | dribbbleo");
@@ -33,12 +38,14 @@ const Signup = () => {
   const signup = async (e) => {
     e.preventDefault();
     const newUser = { username, password, email };
-
-    const {
-      data: { token },
-    } = await api.post("/signup", newUser);
-
-    console.log(JWT.parseJwt(token));
+    try {
+      const {
+        data: { token },
+      } = await api.post("/sinup", newUser);
+      JWT.storeJwt(token);
+    } catch (err) {
+      setError({ ...error, show: true });
+    }
   };
 
   return (
@@ -52,7 +59,7 @@ const Signup = () => {
             Creatives.
           </Text>
         </Header>
-        <Image src={signup} alt="dribbbleo" />
+        <Image src={signupImage} alt="dribbbleo" />
       </ImageSection>
       <FormSection onSubmit={signup}>
         <AuthNav>
@@ -65,6 +72,7 @@ const Signup = () => {
         </AuthNav>
         <Form>
           <SigninText>Sign up to Dribbbleo</SigninText>
+          {error.show ? <Error>{error.msg}</Error> : null}
           <Label htmlFor="username">Username</Label>
           <Input
             type="text"
