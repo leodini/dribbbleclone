@@ -4,6 +4,7 @@ export const PostsContainer = styled.div`
   display: flex;
   width: 90%;
   margin: auto;
+  margin-top: 22px;
 `;
 
 export const PostContainer = styled.div`

@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import pageTitle from "../../utils/title";
 import signupImage from "../../assets/signup.png";
+import AuthContext from "../../context/authContext";
 import {
   Page,
   ImageSection,
@@ -19,8 +20,6 @@ import {
   Error,
   AuthNavText,
 } from "./StyledAuth";
-import JWT from "../../helpers/jwt";
-import api from "../../api";
 
 const Signup = () => {
   const [username, setUsername] = useState("");
@@ -31,25 +30,18 @@ const Signup = () => {
     msg: "username or email already in use",
   });
 
+  const { signup } = useContext(AuthContext);
+
   const history = useHistory();
 
   useEffect(() => {
     pageTitle("Sign Up | dribbbleo");
   }, []);
 
-  const signup = async (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
-    const newUser = { username, password, email };
-    try {
-      const {
-        data: { token },
-      } = await api.post("/signup", newUser);
-      JWT.storeJwt(token);
-      history.push("/");
-    } catch (err) {
-      console.log(err);
-      setError({ ...error, show: true });
-    }
+    await signup(username, password, email);
+    history.push("/");
   };
 
   return (
@@ -65,7 +57,7 @@ const Signup = () => {
         </Header>
         <Image src={signupImage} alt="dribbbleo" />
       </ImageSection>
-      <FormSection onSubmit={signup}>
+      <FormSection onSubmit={handleSignup}>
         <AuthNav>
           <AuthNavText>
             Already a member?{" "}

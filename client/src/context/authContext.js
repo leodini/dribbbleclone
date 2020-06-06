@@ -44,6 +44,18 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const signup = async (username, password, email) => {
+    const newUser = { username, password, email };
+    try {
+      const {
+        data: { token },
+      } = await api.post("/signup", newUser);
+      JWT.storeToken(token);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const signout = () => {
     JWT.clearToken();
     setUsername(null);
@@ -55,7 +67,7 @@ export const AuthProvider = ({ children }) => {
   }, [token, tokenData]);
 
   return (
-    <AuthContext.Provider value={{ username, token, signin, signout }}>
+    <AuthContext.Provider value={{ username, token, signin, signout, signup }}>
       {children}
     </AuthContext.Provider>
   );

@@ -6,7 +6,6 @@ export const SectionContainer = styled.div`
   background-color: #f9f8fd;
   display: flex;
   align-items: center;
-  margin-bottom: 12px;
 `;
 
 export const MainText = styled.h1`
