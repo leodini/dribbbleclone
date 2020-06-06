@@ -1,10 +1,4 @@
-import React, {
-  createContext,
-  useRef,
-  useState,
-  useEffect,
-  useCallback,
-} from "react";
+import React, { createContext, useState, useEffect, useCallback } from "react";
 import api from "../api";
 import JWT from "../helpers/jwt";
 
@@ -18,6 +12,7 @@ export const AuthProvider = ({ children }) => {
     if (token) {
       const { sub } = JWT.parseToken(token);
       setUsername(sub);
+      api.defaults.headers["Authorization"] = token;
     }
   }, [token]);
 
@@ -31,21 +26,20 @@ export const AuthProvider = ({ children }) => {
       const {
         data: { token },
       } = await api.post("/signin", form);
-
       JWT.storeToken(token);
-
       setToken(token);
-
-      const { sub } = JWT.parseToken(token);
-
-      setUsername(sub);
     } catch (err) {
       console.log(err);
     }
   };
 
   const signup = async (username, password, email) => {
-    const newUser = { username, password, email };
+    const newUser = {
+      username,
+      password,
+      email,
+    };
+
     try {
       const {
         data: { token },

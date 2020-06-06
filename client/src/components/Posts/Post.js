@@ -1,6 +1,9 @@
 import React from "react";
 import { FaRegCommentAlt } from "react-icons/fa";
-import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import {
+  AiOutlineHeart,
+  // AiFillHeart
+} from "react-icons/ai";
 import {
   InfoContainer,
   PostContainer,

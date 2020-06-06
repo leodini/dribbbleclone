@@ -24,7 +24,7 @@ import authContext from "../../context/authContext";
 const Signin = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState({
+  const [error] = useState({
     show: false,
     msg: "username or email already in use",
   });

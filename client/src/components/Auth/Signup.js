@@ -25,7 +25,7 @@ const Signup = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  const [error, setError] = useState({
+  const [error] = useState({
     show: false,
     msg: "username or email already in use",
   });
