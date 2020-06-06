@@ -19,7 +19,7 @@ import {
   SigninText,
   Error,
 } from "./StyledAuth";
-import { UserContext } from "../../context/userContext";
+import authContext from "../../context/authContext";
 
 const Signin = () => {
   const [username, setUsername] = useState("");
@@ -28,16 +28,20 @@ const Signin = () => {
     show: false,
     msg: "username or email already in use",
   });
-  const context = useContext(UserContext);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const context = useContext(authContext);
   const history = useHistory();
 
   useEffect(() => {
     pageTitle("Sign In | dribbbleo");
   }, []);
 
-  const signin = (e) => {
+  const signin = async (e) => {
     e.preventDefault();
-    context.signin(username, password);
+    setIsLoading(true);
+    await context.signin(username, password);
+    setIsLoading(false);
     history.push("/");
   };
 
@@ -82,7 +86,11 @@ const Signin = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <Button type="submit">Sign in</Button>
+          {isLoading ? (
+            <Button type="submit">loading...</Button>
+          ) : (
+            <Button type="submit">Sign in</Button>
+          )}
         </Form>
       </FormSection>
     </Page>

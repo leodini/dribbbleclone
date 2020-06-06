@@ -1,15 +1,15 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { UserContext } from "../../context/userContext";
+import AuthContext from "../../context/authContext";
 import { HeaderContainer, SignInButton, SignUpButton } from "./styledHeader";
 
 const Header = () => {
-  const context = useContext(UserContext);
+  const { username } = useContext(AuthContext);
 
   return (
     <HeaderContainer>
       <h2>dribbbleo</h2>
-      {!context.username ? (
+      {!username ? (
         <div className="btn-container" style={{ marginRight: "10px" }}>
           <Link style={{ textDecoration: "none" }} to="/signin">
             <SignInButton>Sign in</SignInButton>
@@ -19,7 +19,10 @@ const Header = () => {
           </Link>
         </div>
       ) : (
-        <SignInButton>Signout</SignInButton>
+        <div className="btn-container" style={{ marginRight: "10px" }}>
+          {/* <SignInButton>Signout</SignInButton> */}
+          <p>hello {username}</p>
+        </div>
       )}
     </HeaderContainer>
   );
