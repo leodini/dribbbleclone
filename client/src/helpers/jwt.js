@@ -17,7 +17,10 @@ const JWT = {
     localStorage.setItem("token", token);
   },
   readToken: () => {
-    localStorage.getItem("token");
+    return localStorage.getItem("token");
+  },
+  clearToken: () => {
+    localStorage.clear("token");
   },
 };
 

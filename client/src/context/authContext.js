@@ -1,22 +1,26 @@
-import React, { createContext, useRef, useState, useEffect } from "react";
+import React, {
+  createContext,
+  useRef,
+  useState,
+  useEffect,
+  useCallback,
+} from "react";
 import api from "../api";
 import JWT from "../helpers/jwt";
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [username, setUsername] = useState("");
-  const [token, setToken] = useState("");
+  const [username, setUsername] = useState(null);
+  const [token, setToken] = useState(JWT.readToken() || null);
 
-  const tokenData = async () => {
-    const storageToken = localStorage.getItem("token");
-    console.log(storageToken);
-    if (storageToken) {
-      setToken(storageToken);
-      const { sub } = await JWT.parseJwt(token);
+  const tokenData = useCallback(() => {
+    if (token) {
+      const { sub } = JWT.parseJwt(token);
+      console.log(sub);
       setUsername(sub);
     }
-  };
+  }, [token]);
 
   const signin = async (username, password) => {
     const form = {
@@ -41,8 +45,18 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const signout = () => {
+    JWT.clearToken();
+    setUsername(null);
+    setToken(null);
+  };
+
+  useEffect(() => {
+    tokenData();
+  }, [token, tokenData]);
+
   return (
-    <AuthContext.Provider value={{ username, token, signin }}>
+    <AuthContext.Provider value={{ username, token, signin, signout }}>
       {children}
     </AuthContext.Provider>
   );

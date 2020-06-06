@@ -4,7 +4,7 @@ import AuthContext from "../../context/authContext";
 import { HeaderContainer, SignInButton, SignUpButton } from "./styledHeader";
 
 const Header = () => {
-  const { username } = useContext(AuthContext);
+  const { username, signout } = useContext(AuthContext);
 
   return (
     <HeaderContainer>
@@ -22,6 +22,7 @@ const Header = () => {
         <div className="btn-container" style={{ marginRight: "10px" }}>
           {/* <SignInButton>Signout</SignInButton> */}
           <p>hello {username}</p>
+          <SignUpButton onClick={signout}>signout</SignUpButton>
         </div>
       )}
     </HeaderContainer>
