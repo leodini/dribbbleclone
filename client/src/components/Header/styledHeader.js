@@ -45,3 +45,15 @@ export const SignUpButton = styled.button`
     background-color: #63a9ff;
   }
 `;
+
+export const UserContainer = styled.div`
+  display: flex;
+  margin-right: 12px;
+  align-items: center;
+
+  p {
+    font-family: Roboto;
+    font-size: 18px;
+    margin: 0 10px;
+  }
+`;

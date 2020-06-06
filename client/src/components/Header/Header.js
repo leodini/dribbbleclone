@@ -1,7 +1,12 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import AuthContext from "../../context/authContext";
-import { HeaderContainer, SignInButton, SignUpButton } from "./styledHeader";
+import {
+  HeaderContainer,
+  SignInButton,
+  SignUpButton,
+  UserContainer,
+} from "./styledHeader";
 
 const Header = () => {
   const { username, signout } = useContext(AuthContext);
@@ -19,11 +24,11 @@ const Header = () => {
           </Link>
         </div>
       ) : (
-        <div className="btn-container" style={{ marginRight: "10px" }}>
+        <UserContainer>
           {/* <SignInButton>Signout</SignInButton> */}
-          <p>hello {username}</p>
+          <p>hello, {username}</p>
           <SignUpButton onClick={signout}>signout</SignUpButton>
-        </div>
+        </UserContainer>
       )}
     </HeaderContainer>
   );

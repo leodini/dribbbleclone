@@ -1,5 +1,5 @@
 const JWT = {
-  parseJwt: (token) => {
+  parseToken: (token) => {
     let base64Url = token.split(".")[1];
     let base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
     let jsonPayload = decodeURIComponent(
@@ -13,7 +13,7 @@ const JWT = {
 
     return JSON.parse(jsonPayload);
   },
-  storeJwt: (token) => {
+  storeToken: (token) => {
     localStorage.setItem("token", token);
   },
   readToken: () => {
