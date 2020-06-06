@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import {
   SectionContainer,
@@ -9,10 +9,10 @@ import {
 } from "./StyledMainSection";
 import { SignUpButton } from "../Header/styledHeader";
 import art from "../../assets/art.svg";
-import AuthContext from "../../context/authContext";
+import useAuth from "../../hooks/useAuth";
 
 const MainSection = () => {
-  const { username } = useContext(AuthContext);
+  const { username } = useAuth();
 
   return (
     <>

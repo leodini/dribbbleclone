@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import AuthContext from "../../context/authContext";
+import useAuth from "../../hooks/useAuth";
 import {
   HeaderContainer,
   SignInButton,
@@ -9,7 +9,7 @@ import {
 } from "./styledHeader";
 
 const Header = () => {
-  const { username, signout } = useContext(AuthContext);
+  const { username, signout } = useAuth();
 
   return (
     <HeaderContainer>

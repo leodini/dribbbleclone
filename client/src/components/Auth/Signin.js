@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import pageTitle from "../../utils/title";
 import chill from "../../assets/chill.jpg";
@@ -19,7 +19,7 @@ import {
   SigninText,
   Error,
 } from "./StyledAuth";
-import authContext from "../../context/authContext";
+import useAuth from "../../hooks/useAuth";
 
 const Signin = () => {
   const [username, setUsername] = useState("");
@@ -30,7 +30,7 @@ const Signin = () => {
   });
   const [isLoading, setIsLoading] = useState(false);
 
-  const context = useContext(authContext);
+  const context = useAuth();
   const history = useHistory();
 
   useEffect(() => {

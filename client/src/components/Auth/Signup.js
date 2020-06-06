@@ -1,8 +1,8 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import pageTitle from "../../utils/title";
 import signupImage from "../../assets/signup.png";
-import AuthContext from "../../context/authContext";
+import useAuth from "../../hooks/useAuth";
 import {
   Page,
   ImageSection,
@@ -30,7 +30,7 @@ const Signup = () => {
     msg: "username or email already in use",
   });
 
-  const { signup } = useContext(AuthContext);
+  const { signup } = useAuth();
 
   const history = useHistory();
 
