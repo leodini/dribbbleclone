@@ -2,12 +2,16 @@ import { useState, useEffect, useCallback } from "react";
 import Proptypes from "prop-types";
 import api from "../api";
 
-const useFetch = (url) => {
+const useFetch = (url, isProtected) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
+  const [isError, setIsError] = useState({ error: false, msg: "" });
 
   const fetchData = useCallback(async () => {
+    if (isProtected && !api.defaults.header["Authorization"]) {
+      setIsError({ error: true, msg: "signin to do this" });
+      return;
+    }
     setIsLoading(true);
     try {
       const { data } = await api.get(url);
@@ -36,10 +40,12 @@ const useFetch = (url) => {
 
 useFetch.propTypes = {
   url: Proptypes.string,
+  isProtected: Proptypes.bool,
 };
 
 useFetch.defaultProps = {
   url: "",
+  isProtected: false,
 };
 
 export default useFetch;
