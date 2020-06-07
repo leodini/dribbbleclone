@@ -12,11 +12,11 @@ import art from "../../assets/art.svg";
 import useAuth from "../../hooks/useAuth";
 
 const MainSection = () => {
-  const { username } = useAuth();
+  const { user } = useAuth();
 
   return (
     <>
-      {!username && (
+      {!user && (
         <SectionContainer>
           <TextContainer>
             <MainText>Discover the world’s top designers & creatives</MainText>

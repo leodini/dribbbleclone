@@ -9,12 +9,12 @@ import {
 } from "./styledHeader";
 
 const Header = () => {
-  const { username, signout } = useAuth();
-
+  const { user, signout } = useAuth();
+  console.log(user);
   return (
     <HeaderContainer>
       <h2>dribbbleo</h2>
-      {!username ? (
+      {!user ? (
         <div className="btn-container" style={{ marginRight: "10px" }}>
           <Link style={{ textDecoration: "none" }} to="/signin">
             <SignInButton>Sign in</SignInButton>
@@ -26,7 +26,7 @@ const Header = () => {
       ) : (
         <UserContainer>
           {/* <SignInButton>Signout</SignInButton> */}
-          <p>hello, {username}</p>
+          <p>hello, {user.username}</p>
           <SignUpButton onClick={signout}>signout</SignUpButton>
         </UserContainer>
       )}

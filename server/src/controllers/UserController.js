@@ -6,7 +6,7 @@ signToken = (user) => {
   return JWT.sign(
     {
       iss: "dribllleclone",
-      sub: user.username,
+      sub: { username: user.username, user_id: user._id, avatar },
       iat: new Date().getTime(),
       exp: new Date().setDate(new Date().getDate() + 30),
     },

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { FaRegCommentAlt } from "react-icons/fa";
 import {
   AiOutlineHeart,
@@ -19,18 +20,23 @@ const Post = ({ post }) => {
     <PostContainer>
       <Image src={image_url} alt={title} />
       <InfoContainer>
-        <AuthorContainer>
-          {author.avatar_url ? (
-            <img src={author.avatar_url} alt={author.username} />
-          ) : (
-            <img
-              src={default_user}
-              alt={author.username}
-              style={{ width: "22px" }}
-            />
-          )}
-          <Author>{author.username}</Author>
-        </AuthorContainer>
+        <Link
+          to={`/user/${author.username}`}
+          style={{ textDecoration: "none" }}
+        >
+          <AuthorContainer>
+            {author.avatar_url ? (
+              <img src={author.avatar_url} alt={author.username} />
+            ) : (
+              <img
+                src={default_user}
+                alt={author.username}
+                style={{ width: "22px" }}
+              />
+            )}
+            <Author>{author.username}</Author>
+          </AuthorContainer>
+        </Link>
         <div className="">
           <FaRegCommentAlt
             style={{ color: "#404050", marginRight: "3px" }}

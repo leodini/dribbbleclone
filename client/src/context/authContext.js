@@ -5,13 +5,13 @@ import JWT from "../helpers/jwt";
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [username, setUsername] = useState(null);
+  const [user, setUser] = useState(null);
   const [token, setToken] = useState(JWT.readToken() || null);
 
   const tokenData = useCallback(() => {
     if (token) {
       const { sub } = JWT.parseToken(token);
-      setUsername(sub);
+      setUser(sub);
       api.defaults.headers["Authorization"] = token;
     }
   }, [token]);
@@ -45,6 +45,7 @@ export const AuthProvider = ({ children }) => {
         data: { token },
       } = await api.post("/signup", newUser);
       JWT.storeToken(token);
+      setToken(token);
     } catch (err) {
       console.log(err);
     }
@@ -52,7 +53,7 @@ export const AuthProvider = ({ children }) => {
 
   const signout = () => {
     JWT.clearToken();
-    setUsername(null);
+    setUser(null);
     setToken(null);
   };
 
@@ -61,7 +62,7 @@ export const AuthProvider = ({ children }) => {
   }, [token, tokenData]);
 
   return (
-    <AuthContext.Provider value={{ username, token, signin, signout, signup }}>
+    <AuthContext.Provider value={{ user, token, signin, signout, signup }}>
       {children}
     </AuthContext.Provider>
   );
