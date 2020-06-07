@@ -10,7 +10,7 @@ import {
 
 const Header = () => {
   const { user, signout } = useAuth();
-  console.log(user);
+
   return (
     <HeaderContainer>
       <h2>dribbbleo</h2>

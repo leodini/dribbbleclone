@@ -18,9 +18,9 @@ const useFetch = (url, isProtected) => {
       setData(data);
       setIsLoading(false);
     } catch (err) {
-      setIsError(true);
+      setIsError({ error: true, msg: err });
     }
-  }, [url]);
+  }, [url, isProtected]);
 
   useEffect(() => {
     let mounted = true;

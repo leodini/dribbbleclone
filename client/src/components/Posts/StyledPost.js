@@ -10,6 +10,7 @@ export const PostsContainer = styled.div`
 export const PostContainer = styled.div`
   display: flex;
   flex-direction: column;
+  margin: 0 12px;
 `;
 
 export const InfoContainer = styled.div`
@@ -34,4 +35,16 @@ export const Author = styled.p`
 export const AuthorContainer = styled.div`
   display: flex;
   align-items: center;
+
+  div {
+    align-items: center;
+  }
+`;
+
+export const Counter = styled.span`
+  font-family: Roboto;
+  color: #a1a1aa;
+  font-size: 14px;
+  padding: 3px;
+  margin-right: 6px;
 `;

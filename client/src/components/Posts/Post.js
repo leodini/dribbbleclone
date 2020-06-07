@@ -11,11 +11,12 @@ import {
   Image,
   Author,
   AuthorContainer,
+  Counter,
 } from "./StyledPost";
 import default_user from "../../assets/default_user.png";
 
-const Post = ({ post }) => {
-  const { image_url, title, author, comments, likes } = post;
+const Post = ({ post, likePost }) => {
+  const { image_url, title, author, comments, likes, _id } = post;
   return (
     <PostContainer>
       <Image src={image_url} alt={title} />
@@ -34,16 +35,18 @@ const Post = ({ post }) => {
             <Author>{author.username}</Author>
           </AuthorContainer>
         </Link>
-        <div className="">
+        <div>
           <FaRegCommentAlt
-            style={{ color: "#404050", marginRight: "3px" }}
-            size={16}
-          >
-            <span>{comments.length}</span>
-          </FaRegCommentAlt>
-          <AiOutlineHeart style={{ color: "#404050" }} size={18}>
-            <span>{likes.length}</span>
-          </AiOutlineHeart>
+            style={{ color: "#a1a1aa", marginRight: "3px", cursor: "pointer" }}
+            size={12}
+          />
+          <Counter>{comments.length}</Counter>
+          <AiOutlineHeart
+            onClick={() => likePost(_id)}
+            style={{ color: "#a1a1aa", cursor: "pointer" }}
+            size={14}
+          />
+          <Counter>{likes.length}</Counter>
         </div>
       </InfoContainer>
     </PostContainer>
