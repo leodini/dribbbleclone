@@ -20,10 +20,7 @@ const Post = ({ post }) => {
     <PostContainer>
       <Image src={image_url} alt={title} />
       <InfoContainer>
-        <Link
-          to={`/user/${author.username}`}
-          style={{ textDecoration: "none" }}
-        >
+        <Link to={`/${author.username}`} style={{ textDecoration: "none" }}>
           <AuthorContainer>
             {author.avatar_url ? (
               <img src={author.avatar_url} alt={author.username} />

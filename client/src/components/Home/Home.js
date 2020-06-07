@@ -1,19 +1,13 @@
-import React, { useEffect, useState } from "react";
-import api from "../../api";
+import React, { useEffect } from "react";
 import { Header, MainSection, Posts } from "../";
 import "../../styles.css";
+import useFetch from "../../hooks/useFetch";
 
 function App() {
-  const [data, setData] = useState([]);
+  const { data, isLoading, isError } = useFetch("/posts");
 
   useEffect(() => {
     window.document.title = "dribbbleo";
-    async function fetchData() {
-      const { data } = await api.get("/posts");
-      setData(data);
-      console.log(data);
-    }
-    fetchData();
   }, []);
 
   return (
