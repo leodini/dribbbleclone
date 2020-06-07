@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Modal from "react-modal";
 import { FaRegCommentAlt } from "react-icons/fa";
-import { PopupModal } from "../";
+import { PostModal } from "../";
 import {
   AiOutlineHeart,
   // AiFillHeart
@@ -19,17 +19,27 @@ import default_user from "../../assets/default_user.png";
 
 const Post = ({ post, likePost }) => {
   const [open, setOpen] = useState(false);
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   const { image_url, title, author, comments, likes, _id } = post;
+
   return (
     <PostContainer>
-      {/* <Link to={`/${_id}`}> */}
       <button
-        onClick={() => setOpen(!open)}
+        onClick={() => setOpen(true)}
         style={{ border: "none", background: "transparent", cursor: "pointer" }}
       >
         <Image src={image_url} alt={title} />
       </button>
-      <PopupModal postId={_id} open={open} />
+      <PostModal
+        postId={_id}
+        open={open}
+        handleClose={handleClose}
+        likePost={likePost}
+      />
       <InfoContainer>
         <Link to={`/${author.username}`} style={{ textDecoration: "none" }}>
           <AuthorContainer>

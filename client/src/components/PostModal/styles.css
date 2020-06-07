@@ -1,0 +1,24 @@
+.Modal {
+  position: absolute;
+  top: 40px;
+  left: 460px;
+  right: 460px;
+  bottom: 40px;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+}
