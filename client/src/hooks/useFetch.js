@@ -19,7 +19,16 @@ const useFetch = (url) => {
   }, [url]);
 
   useEffect(() => {
+    let mounted = true;
+    const abortController = new AbortController();
     fetchData();
+
+    const cleanup = () => {
+      mounted = false;
+      abortController.abort();
+    };
+
+    return cleanup;
   }, [fetchData]);
 
   return { data, isLoading, isError };

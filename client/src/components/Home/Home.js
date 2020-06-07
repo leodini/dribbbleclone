@@ -3,12 +3,14 @@ import { Header, MainSection, Posts } from "../";
 import "../../styles.css";
 import useFetch from "../../hooks/useFetch";
 
-function App() {
-  const { data, isLoading, isError } = useFetch("/posts");
+function Home() {
+  const { data, isLoading } = useFetch("/posts");
 
   useEffect(() => {
     window.document.title = "dribbbleo";
   }, []);
+
+  if (isLoading) return "Loading...";
 
   return (
     <div>
@@ -19,4 +21,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;
