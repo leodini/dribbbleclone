@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Modal from "react-modal";
 import useFetch from "../../hooks/useFetch";
 import { AuthorContainer, Close } from "./StyledModal";
@@ -9,10 +9,6 @@ Modal.setAppElement("#yourAppElement");
 
 const PopupModal = ({ postId, open, handleClose }) => {
   const { data, isLoading } = useFetch(`/posts/${postId}`);
-
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
 
   if (!data) return null;
   return (
