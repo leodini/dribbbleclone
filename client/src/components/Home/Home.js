@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { Header, MainSection, Posts } from "../";
+import Loading from "../Loading/Loading";
 import "../../styles.css";
 import useFetch from "../../hooks/useFetch";
 
@@ -10,7 +11,7 @@ function Home() {
     window.document.title = "dribbbleo";
   }, []);
 
-  if (isLoading) return "Loading...";
+  if (isLoading) return <Loading />;
 
   return (
     <div>

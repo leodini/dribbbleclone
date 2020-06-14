@@ -1,8 +1,11 @@
 import React, { Suspense, lazy } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-// import { Home, Signin, Signup, User } from "./components";
+// import Loading from "./components/Loading/Loading";
 
-const { Home, Signin, Signup, User } = lazy(() => import("./components"));
+const Home = lazy(() => import("./components/Home/Home"));
+const Signin = lazy(() => import("./components/Auth/Signin"));
+const Signup = lazy(() => import("./components/Auth/Signup"));
+const User = lazy(() => import("./components/User/User"));
 
 const Routes = () => {
   return (
