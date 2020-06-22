@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import WrapWithUser from "../../hocs/wrapWithUser";
 import {
   HeaderContainer,
   SignInButton,
@@ -8,8 +9,8 @@ import {
   UserContainer,
 } from "./styledHeader";
 
-const Header = () => {
-  const { user, signout } = useAuth();
+const Header = ({ user }) => {
+  const { signout } = useAuth();
 
   return (
     <HeaderContainer>
@@ -34,4 +35,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default WrapWithUser(Header);
