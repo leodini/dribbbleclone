@@ -7,3 +7,4 @@ export { default as Posts } from "./Posts/PostContainer";
 export { default as Home } from "./Home/Home";
 export { default as User } from "./User/User";
 export { default as PostModal } from "./PostModal/PostModal";
+export { default as PostPage } from "./PostPage/PostPage";

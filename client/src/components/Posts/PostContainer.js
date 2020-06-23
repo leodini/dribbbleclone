@@ -5,7 +5,7 @@ import Post from "./Post";
 
 const Posts = ({ data }) => {
   const likePost = async (postId) => {
-    const { data } = await api.post(`/like/${postId}/post`);
+    const { data } = await api.post(`/like/post/${postId}`);
     console.log(data);
   };
 

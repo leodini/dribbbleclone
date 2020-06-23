@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import { AuthorContainer } from "./StyledPostPage";
@@ -6,6 +6,10 @@ import { AuthorContainer } from "./StyledPostPage";
 const PostPage = () => {
   const { id } = useParams();
   const { data, isLoading } = useFetch(`/posts/${id}`);
+
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
 
   if (isLoading) {
     return "loading...";
