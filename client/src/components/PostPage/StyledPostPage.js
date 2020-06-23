@@ -2,11 +2,12 @@ import styled from "styled-components";
 
 export const AuthorContainer = styled.div`
   display: flex;
-  margin-bottom: 12px;
-  img {
+  /* margin-bottom: 12px; */
+  flex-direction: column;
+  /* img {
     border-radius: 50%;
     width: 60px !important;
-  }
+  } */
 
   div {
     display: flex;
@@ -21,7 +22,7 @@ export const AuthorContainer = styled.div`
     .author {
       color: #ea4c89;
       font-size: 16px;
-      font-family: Roboto;
+      font-family: "Roboto";
       font-weight: 700;
       span {
         color: #6e6d7a;
@@ -39,7 +40,13 @@ export const PostPageContainer = styled.div`
   margin: auto;
   margin-top: 34px;
 
-  img {
-    width: 80px;
+  .author-image {
+    width: 50px;
+    height: 40px;
+    border-radius: 50%;
+  }
+
+  .info-container {
+    display: flex;
   }
 `;
