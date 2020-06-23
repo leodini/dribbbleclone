@@ -20,7 +20,7 @@ const Post = ({ post, likePost }) => {
 
   return (
     <PostContainer>
-      <Link to={`/shot/${_id}`}>
+      <Link to={`/post/${_id}`}>
         <Image src={image_url} alt={title} />
       </Link>
       <InfoContainer>

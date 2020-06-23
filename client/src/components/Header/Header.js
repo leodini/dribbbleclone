@@ -13,7 +13,9 @@ const Header = () => {
 
   return (
     <HeaderContainer>
-      <h2>dribbbleo</h2>
+      <Link to="/" style={{ textDecoration: "none" }}>
+        <h2>dribbbleo</h2>
+      </Link>
       {!user ? (
         <div className="btn-container" style={{ marginRight: "10px" }}>
           <Link style={{ textDecoration: "none" }} to="/signin">

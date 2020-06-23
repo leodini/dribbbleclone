@@ -32,3 +32,14 @@ export const AuthorContainer = styled.div`
     }
   }
 `;
+
+export const PostPageContainer = styled.div`
+  width: 50%;
+  height: 100%;
+  margin: auto;
+  margin-top: 34px;
+
+  img {
+    width: 80px;
+  }
+`;
