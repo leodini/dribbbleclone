@@ -1,9 +1,11 @@
 import React from "react";
 import { useState } from "react";
 import api from "../../api";
+import useAuth from "../../hooks/useAuth";
 
 const CommentForm = ({ postId }) => {
   const [content, setContent] = useState("");
+  const { user } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -17,15 +19,21 @@ const CommentForm = ({ postId }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <textarea
-        type="text"
-        value={content}
-        placeholder="deixe seu comentario"
-        onChange={(e) => setContent(e.target.value)}
-      />
-      <button type="submit">enviar</button>
-    </form>
+    <>
+      {user && (
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            value={content}
+            placeholder="deixe seu comentario"
+            onChange={(e) => setContent(e.target.value)}
+          />
+          <button disabled={!content} type="submit">
+            enviar
+          </button>
+        </form>
+      )}
+    </>
   );
 };
 

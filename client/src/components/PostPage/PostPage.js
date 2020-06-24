@@ -1,10 +1,15 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
-import { AuthorContainer, PostPageContainer } from "./StyledPostPage";
+import {
+  AuthorContainer,
+  PostPageContainer,
+  UserImage,
+} from "./StyledPostPage";
 import default_user from "../../assets/default_user.png";
 import { Header } from "../";
 import CommentForm from "./CommentForm";
+import Comments from "../Comments/Comments";
 
 const PostPage = () => {
   const { id } = useParams();
@@ -21,13 +26,13 @@ const PostPage = () => {
       <PostPageContainer>
         <div className="info-container">
           {author.avatar_url ? (
-            <img
+            <UserImage
               className="author-image"
               src={author.avatar_url}
               alt={author.username}
             />
           ) : (
-            <img
+            <UserImage
               className="author-image"
               src={default_user}
               alt={author.username}
@@ -50,14 +55,9 @@ const PostPage = () => {
         <div className="desc">{description}</div>
         <CommentForm postId={id} />
         {comments ? (
-          comments.map((comment, i) => (
-            <div key={i} className="comment-container">
-              <span>{comment.author.username}</span>
-              <p>{comment.content}</p>
-            </div>
-          ))
+          comments.map((comment, i) => <Comments comment={comment} key={i} />)
         ) : (
-          <p>seja o primeiro a comentar</p>
+          <p>seja o peimeiro a comentar</p>
         )}
       </PostPageContainer>
     </>

@@ -35,7 +35,7 @@ export const AuthorContainer = styled.div`
 `;
 
 export const PostPageContainer = styled.div`
-  width: 50%;
+  width: 800px;
   height: 100%;
   margin: auto;
   margin-top: 34px;
@@ -49,4 +49,10 @@ export const PostPageContainer = styled.div`
   .info-container {
     display: flex;
   }
+`;
+
+export const UserImage = styled.img`
+  border-radius: 50%;
+  width: ${(props) => (props.width ? props.width : "60px")};
+  height: ${(props) => (props.height ? props.height : "60px")};
 `;
