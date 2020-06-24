@@ -54,10 +54,10 @@ const PostPage = () => {
         />
         <div className="desc">{description}</div>
         <CommentForm postId={id} />
-        {comments ? (
+        {comments.length ? (
           comments.map((comment, i) => <Comments comment={comment} key={i} />)
         ) : (
-          <p>seja o peimeiro a comentar</p>
+          <p>seja o primeiro a comentar</p>
         )}
       </PostPageContainer>
     </>
