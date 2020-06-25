@@ -2,26 +2,16 @@ import React from "react";
 import { useState } from "react";
 import api from "../../api";
 import useAuth from "../../hooks/useAuth";
+import useFetchApi from "../../hooks/useFetchApi";
 
-const CommentForm = ({ postId }) => {
+const CommentForm = ({ postId, handleComment }) => {
   const [content, setContent] = useState("");
   const { user } = useAuth();
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const data = await api.post(`/comment/${postId}`, { content });
-      console.log(data);
-      setContent("");
-    } catch (e) {
-      console.log(e);
-    }
-  };
 
   return (
     <>
       {user && (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleComment}>
           <input
             type="text"
             value={content}

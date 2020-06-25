@@ -4,23 +4,28 @@ import api from "../api";
 const DataContext = createContext();
 
 export const DataProvider = ({ children }) => {
-  const [apiData, setApiData] = useState(null);
+  const [apiData, setApiData] = useState({
+    posts: [],
+    post: {},
+    comments: [],
+    likes: [],
+  });
 
   const fetchApiData = async (url) => {
     try {
       const { data } = await api.get(url);
       console.log(data);
-      apiData(data);
+      setApiData({ ...apiData, posts: data });
     } catch (error) {
       console.log(error);
     }
   };
 
-  const postApiData = async (url, dataPost) => {
+  const postApiData = async (url, dataPost, target) => {
     try {
       const { data } = await api.post(url, { dataPost });
       console.log(data);
-      setApiData([...apiData, data]);
+      setApiData(...apiData, data);
     } catch (error) {
       console.log(error);
     }
@@ -32,3 +37,5 @@ export const DataProvider = ({ children }) => {
     </DataContext.Provider>
   );
 };
+
+export default DataContext;
