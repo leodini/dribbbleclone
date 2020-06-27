@@ -19,18 +19,17 @@ export const PostsContainer = styled.div`
     left: 0;
     right: 0;
     opacity: 0;
-    bottom: 0;
+    bottom: 8px;
     color: #fff;
     min-height: 9rem;
+    border-radius: 8px;
     display: flex;
     align-items: flex-end;
     padding: 0px 1.5rem 1.5rem;
     background: -webkit-gradient(
-      linear,
-      0% 0%,
-      0% 100%,
-      color-stop(-0.3, transparent),
-      to(rgb(20, 20, 20))
+      to bottom,
+      rgba(255, 0, 0, 0),
+      rgba(20, 20, 20, 1)
     );
     background: -moz-linear-gradient(
       to bottom,
@@ -39,19 +38,15 @@ export const PostsContainer = styled.div`
     );
 
     background: -o-linear-gradient(
-      linear,
-      0% 0%,
-      0% 100%,
-      color-stop(-0.3, transparent),
-      to(rgb(20, 20, 20))
+      to bottom,
+      rgba(255, 0, 0, 0),
+      rgba(20, 20, 20, 1)
     );
 
     background: linear-gradient(
-      linear,
-      0% 0%,
-      0% 100%,
-      color-stop(-0.3, transparent),
-      to(rgb(20, 20, 20))
+      to bottom,
+      rgba(255, 0, 0, 0),
+      rgba(20, 20, 20, 1)
     );
 
     -moz-transition: all 0.4s ease-in-out 0s;
