@@ -32,6 +32,6 @@ export const TextContainer = styled.div`
 `;
 
 export const Image = styled.img`
-  width: 350px;
+  width: 550px;
   margin: auto;
 `;

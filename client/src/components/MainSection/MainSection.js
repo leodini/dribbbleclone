@@ -8,7 +8,7 @@ import {
   MainText,
 } from "./StyledMainSection";
 import { SignUpButton } from "../Header/styledHeader";
-import art from "../../assets/art.svg";
+import art from "../../assets/header_art.png";
 import useAuth from "../../hooks/useAuth";
 
 const MainSection = () => {

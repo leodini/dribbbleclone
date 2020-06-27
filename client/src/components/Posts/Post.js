@@ -14,9 +14,17 @@ import {
   Counter,
 } from "./StyledPost";
 import { Avatar } from "../Shared/Avatar";
+import api from "../../api";
 
-const Post = ({ post, likePost }) => {
-  const { image_url, title, author, comments, likes, _id } = post;
+const Post = ({ post }) => {
+  const [numLikes, setNumLikes] = useState(post.likes);
+
+  const likePost = async (postId) => {
+    const { data } = await api.post(`/like/post/${postId}`);
+    setNumLikes([...numLikes, data]);
+  };
+
+  const { image_url, title, author, comments, _id } = post;
 
   return (
     <PostContainer>
@@ -24,7 +32,10 @@ const Post = ({ post, likePost }) => {
         <Image src={image_url} alt={title} />
       </Link>
       <InfoContainer>
-        <Link to={`/${author.username}`} style={{ textDecoration: "none" }}>
+        <Link
+          to={`/user/${author.username}`}
+          style={{ textDecoration: "none" }}
+        >
           <AuthorContainer>
             <Avatar user={author} />
             <Author>{author.username}</Author>
@@ -41,7 +52,7 @@ const Post = ({ post, likePost }) => {
             style={{ color: "#a1a1aa", cursor: "pointer" }}
             size={14}
           />
-          <Counter>{likes.length}</Counter>
+          <Counter>{numLikes.length}</Counter>
         </div>
       </InfoContainer>
     </PostContainer>

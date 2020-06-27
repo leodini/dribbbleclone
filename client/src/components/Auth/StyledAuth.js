@@ -83,8 +83,8 @@ export const Button = styled.button`
   padding: 15px;
   border: none;
   font-size: 16px;
-  font-weight: 600;
-  font-family: Roboto, sans-serif;
+  font-weight: 700;
+  font-family: "Roboto", sans-serif;
   cursor: pointer;
   border-radius: 8px;
   width: 160px;

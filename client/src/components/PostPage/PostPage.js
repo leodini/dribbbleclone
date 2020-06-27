@@ -17,7 +17,6 @@ import { Avatar } from "../Shared/Avatar";
 const PostPage = () => {
   const { id } = useParams();
   const [post, setPost] = useState(null);
-  const [content, setContent] = useState("");
   const { user } = useAuth();
 
   useEffect(() => {
@@ -29,17 +28,15 @@ const PostPage = () => {
     setPost(data);
   };
 
-  const handleComment = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (content) => {
     try {
       const { data } = await api.post(`/comment/${id}`, { content });
       console.log(user);
       data.author = user;
       setPost({ ...post, comments: [data, ...comments] });
     } catch (e) {
-      console.log(e);
+      throw new Error(e);
     }
-    setContent("");
   };
 
   if (!post) {
@@ -69,20 +66,7 @@ const PostPage = () => {
           style={{ width: "760px", borderRadius: "8px" }}
         />
         <div className="desc">{description}</div>
-        {/* <CommentForm postId={id} handleComment={handleComment} /> */}
-        {user && (
-          <form onSubmit={handleComment}>
-            <input
-              type="text"
-              value={content}
-              placeholder="deixe seu comentario"
-              onChange={(e) => setContent(e.target.value)}
-            />
-            <button disabled={!content} type="submit">
-              enviar
-            </button>
-          </form>
-        )}
+        <CommentForm postId={id} handleSubmit={handleSubmit} />
         {comments.length ? (
           comments.map((comment, i) => <Comments comment={comment} key={i} />)
         ) : (

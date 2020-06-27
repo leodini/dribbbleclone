@@ -4,7 +4,6 @@ import default_user from "../../assets/default_user.png";
 import { Avatar } from "../Shared/Avatar";
 
 const Comments = ({ comment }) => {
-  // console.log(comment)
   return (
     <div className="comment-container">
       <Avatar user={comment.author} height={"30px"} width={"30px"} />
