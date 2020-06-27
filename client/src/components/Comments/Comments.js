@@ -1,26 +1,13 @@
 import React from "react";
 import { UserImage } from "../PostPage/StyledPostPage";
 import default_user from "../../assets/default_user.png";
+import { Avatar } from "../Shared/Avatar";
 
 const Comments = ({ comment }) => {
   // console.log(comment)
   return (
     <div className="comment-container">
-      {comment.author.avatar_url ? (
-        <UserImage
-          width="32px"
-          height="32px"
-          src={comment.author.avatar_url}
-          alt={comment.author.username}
-        />
-      ) : (
-        <UserImage
-          width="32px"
-          height="32px"
-          src={default_user}
-          alt={comment.author.username}
-        />
-      )}
+      <Avatar user={comment.author} height={"30px"} width={"30px"} />
       <span>{comment.author.username}</span>
       <p>{comment.content}</p>
     </div>

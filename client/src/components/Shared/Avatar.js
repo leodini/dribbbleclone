@@ -1,6 +1,7 @@
 import React from "react";
-import default_user from "../../assets/default_user.png";
+import default_user from "../../assets/user.png";
 import { UserAvatar } from "./StyledAvatar";
+import Proptypes from "prop-types";
 
 export const Avatar = ({ user, width, height }) => {
   return (
@@ -22,4 +23,9 @@ export const Avatar = ({ user, width, height }) => {
       )}
     </>
   );
+};
+
+Avatar.propTypes = {
+  width: Proptypes.string,
+  height: Proptypes.string,
 };
