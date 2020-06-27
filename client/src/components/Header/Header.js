@@ -29,9 +29,9 @@ const Header = () => {
         </div>
       ) : (
         <UserContainer>
-          <div class="dropdown">
+          <div className="dropdown">
             <Avatar user={user} width={"32px"} height={"32px"} />
-            <ul class="dropdown-content">
+            <ul className="dropdown-content">
               <li>
                 <Link id="link" to={`/users/${user.user_id}`}>
                   Profile
