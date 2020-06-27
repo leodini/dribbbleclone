@@ -43,7 +43,12 @@ const Post = ({ post }) => {
   return (
     <PostContainer>
       <Link to={`/post/${_id}`}>
-        <Image src={image_url} alt={title} />
+        <div className="hvrbox">
+          <Image src={image_url} alt={title} />
+          <div className="hvrbox-layer_top">
+            <div className="hvrbox-text">{title}</div>
+          </div>
+        </div>
       </Link>
       <InfoContainer>
         <Link

@@ -6,6 +6,64 @@ export const PostsContainer = styled.div`
   margin: auto;
   margin-top: 22px;
   flex-wrap: wrap;
+
+  .hvrbox {
+    position: relative;
+    overflow: hidden;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .hvrbox-layer_top {
+    position: absolute;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    bottom: 0;
+    color: #fff;
+    min-height: 9rem;
+    display: flex;
+    align-items: flex-end;
+    padding: 0px 1.5rem 1.5rem;
+    background: -webkit-gradient(
+      linear,
+      0% 0%,
+      0% 100%,
+      color-stop(-0.3, transparent),
+      to(rgb(20, 20, 20))
+    );
+    background: -moz-linear-gradient(
+      to bottom,
+      rgba(255, 0, 0, 0),
+      rgba(20, 20, 20, 1)
+    );
+
+    background: -o-linear-gradient(
+      linear,
+      0% 0%,
+      0% 100%,
+      color-stop(-0.3, transparent),
+      to(rgb(20, 20, 20))
+    );
+
+    background: linear-gradient(
+      linear,
+      0% 0%,
+      0% 100%,
+      color-stop(-0.3, transparent),
+      to(rgb(20, 20, 20))
+    );
+
+    -moz-transition: all 0.4s ease-in-out 0s;
+    -webkit-transition: all 0.4s ease-in-out 0s;
+    -ms-transition: all 0.4s ease-in-out 0s;
+    transition: all 0.4s ease-in-out 0s;
+  }
+
+  .hvrbox:hover .hvrbox-layer_top,
+  .hvrbox.active .hvrbox-layer_top {
+    opacity: 1;
+  }
 `;
 
 export const PostContainer = styled.div`

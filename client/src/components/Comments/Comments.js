@@ -1,4 +1,5 @@
 import React from "react";
+import { format } from "timeago.js";
 import { Avatar } from "../Shared/Avatar";
 
 const Comments = ({ comment }) => {
@@ -7,6 +8,7 @@ const Comments = ({ comment }) => {
       <Avatar user={comment.author} height={"30px"} width={"30px"} />
       <span>{comment.author.username}</span>
       <p>{comment.content}</p>
+      <p>{format(comment.createdAt)}</p>
     </div>
   );
 };
