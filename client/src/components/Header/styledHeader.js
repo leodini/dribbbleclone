@@ -56,13 +56,41 @@ export const UserContainer = styled.div`
     font-size: 18px;
     margin: 0 10px;
   }
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+
+  .dropdown-content li {
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  .dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+  }
 `;
 
 export const SignOutButton = styled.button`
   cursor: pointer;
   padding: 10px 16px;
   /* margin: 8px; */
-  margin-left: 6px;
+  margin-left: 10px;
   height: 40px;
   font-size: 14px;
   font-weight: 500;

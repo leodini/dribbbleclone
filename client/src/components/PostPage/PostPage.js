@@ -1,12 +1,7 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
-import {
-  AuthorContainer,
-  PostPageContainer,
-  UserImage,
-} from "./StyledPostPage";
-import default_user from "../../assets/default_user.png";
+import { AuthorContainer, PostPageContainer } from "./StyledPostPage";
 import { Header } from "../";
 import CommentForm from "./CommentForm";
 import Comments from "../Comments/Comments";

@@ -8,7 +8,6 @@ import {
   UserContainer,
   SignOutButton,
 } from "./styledHeader";
-import default_user from "../../assets/default_user.png";
 import { Avatar } from "../Shared/Avatar";
 
 const Header = () => {
@@ -30,9 +29,20 @@ const Header = () => {
         </div>
       ) : (
         <UserContainer>
-          <p>hello, {user.username}</p>
-          <Avatar user={user} />
-          <SignOutButton onClick={signout}>signout</SignOutButton>
+          <div class="dropdown">
+            <Avatar user={user} width={"32px"} height={"32px"} />
+            <ul class="dropdown-content">
+              <li>
+                <Link id="link" to={`/users/${user.user_id}`}>
+                  Profile
+                </Link>
+              </li>
+              <li onClick={signout}>
+                <p>Signout</p>
+              </li>
+            </ul>
+          </div>
+          <SignOutButton>upload</SignOutButton>
         </UserContainer>
       )}
     </HeaderContainer>
