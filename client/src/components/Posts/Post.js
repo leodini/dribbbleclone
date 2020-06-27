@@ -13,7 +13,7 @@ import {
   AuthorContainer,
   Counter,
 } from "./StyledPost";
-import default_user from "../../assets/default_user.png";
+import { Avatar } from "../Shared/Avatar";
 
 const Post = ({ post, likePost }) => {
   const { image_url, title, author, comments, likes, _id } = post;
@@ -26,11 +26,7 @@ const Post = ({ post, likePost }) => {
       <InfoContainer>
         <Link to={`/${author.username}`} style={{ textDecoration: "none" }}>
           <AuthorContainer>
-            {author.avatar_url ? (
-              <img src={author.avatar_url} alt={author.username} />
-            ) : (
-              <img src={default_user} alt={author.username} />
-            )}
+            <Avatar user={author} />
             <Author>{author.username}</Author>
           </AuthorContainer>
         </Link>

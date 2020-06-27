@@ -12,6 +12,7 @@ import CommentForm from "./CommentForm";
 import Comments from "../Comments/Comments";
 import api from "../../api";
 import useAuth from "../../hooks/useAuth";
+import { Avatar } from "../Shared/Avatar";
 
 const PostPage = () => {
   const { id } = useParams();
@@ -52,19 +53,7 @@ const PostPage = () => {
       <Header />
       <PostPageContainer>
         <div className="info-container">
-          {!!author.avatar_url ? (
-            <UserImage
-              className="author-image"
-              src={author.avatar_url}
-              alt={author.username}
-            />
-          ) : (
-            <UserImage
-              className="author-image"
-              src={default_user}
-              alt={author.username}
-            />
-          )}
+          <Avatar user={author} />
           <AuthorContainer>
             <div>
               <p className="title">{title}</p>

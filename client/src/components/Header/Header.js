@@ -8,6 +8,7 @@ import {
   UserContainer,
 } from "./styledHeader";
 import default_user from "../../assets/default_user.png";
+import { Avatar } from "../Shared/Avatar";
 
 const Header = () => {
   const { signout, user } = useAuth();
@@ -29,19 +30,7 @@ const Header = () => {
       ) : (
         <UserContainer>
           <p>hello, {user.username}</p>
-          {user.avatar_url ? (
-            <img
-              src={user.avatar_url}
-              alt={user.username}
-              style={{ width: "40px", height: "40px" }}
-            />
-          ) : (
-            <img
-              src={default_user}
-              alt={user.username}
-              style={{ width: "40px", height: "40px" }}
-            />
-          )}
+          <Avatar user={user} />
           <SignUpButton onClick={signout}>signout</SignUpButton>
         </UserContainer>
       )}
