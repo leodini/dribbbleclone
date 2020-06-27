@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import { Header, MainSection, Posts } from "../";
 import Loading from "../Loading/Loading";
 import api from "../../api";
+import useAuth from "../../hooks/useAuth";
 
 function Home() {
   const [posts, setPosts] = useState([]);
+  const { user } = useAuth();
 
   useEffect(() => {
     window.document.title = "dribbbleo";
@@ -20,7 +22,7 @@ function Home() {
   return (
     <div>
       <Header />
-      <MainSection />
+      {!user && <MainSection />}
       {posts.length ? <Posts data={posts} /> : <p>nenhum post ainda =(</p>}
     </div>
   );

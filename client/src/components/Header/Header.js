@@ -6,6 +6,7 @@ import {
   SignInButton,
   SignUpButton,
   UserContainer,
+  SignOutButton,
 } from "./styledHeader";
 import default_user from "../../assets/default_user.png";
 import { Avatar } from "../Shared/Avatar";
@@ -31,7 +32,7 @@ const Header = () => {
         <UserContainer>
           <p>hello, {user.username}</p>
           <Avatar user={user} />
-          <SignUpButton onClick={signout}>signout</SignUpButton>
+          <SignOutButton onClick={signout}>signout</SignOutButton>
         </UserContainer>
       )}
     </HeaderContainer>

@@ -57,3 +57,22 @@ export const UserContainer = styled.div`
     margin: 0 10px;
   }
 `;
+
+export const SignOutButton = styled.button`
+  cursor: pointer;
+  padding: 10px 16px;
+  /* margin: 8px; */
+  margin-left: 6px;
+  height: 40px;
+  font-size: 14px;
+  font-weight: 500;
+  background: #6c63ff;
+  border: none;
+  color: #fff;
+  width: 100px;
+  font-family: Roboto, sans-serif;
+  border-radius: 8px;
+  :hover {
+    background-color: #63a9ff;
+  }
+`;

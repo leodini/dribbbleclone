@@ -2,15 +2,17 @@ import styled from "styled-components";
 
 export const PostsContainer = styled.div`
   display: flex;
-  width: 90%;
+  width: 93%;
   margin: auto;
   margin-top: 22px;
+  flex-wrap: wrap;
 `;
 
 export const PostContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin: 0 12px;
+  margin-top: 22px;
 `;
 
 export const InfoContainer = styled.div`
