@@ -1,24 +1,27 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Header, MainSection, Posts } from "../";
 import Loading from "../Loading/Loading";
-import "../../styles.css";
-// import useFetch from "../../hooks/useFetch";
-import useFetchApi from "../../hooks/useFetchApi";
+import api from "../../api";
 
 function Home() {
-  const { fetchApiData, apiData } = useFetchApi();
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     window.document.title = "dribbbleo";
-    fetchApiData("/posts");
+    fetchPosts();
   }, []);
 
-  if (!apiData.posts) return <Loading />;
+  const fetchPosts = async () => {
+    const { data } = await api.get("/posts");
+    setPosts(data);
+  };
+
+  if (!posts) return <Loading />;
   return (
     <div>
       <Header />
       <MainSection />
-      <Posts data={apiData.posts} />
+      {posts.length ? <Posts data={posts} /> : <p>nenhum post ainda =(</p>}
     </div>
   );
 }

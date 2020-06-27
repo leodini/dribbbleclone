@@ -39,6 +39,13 @@ export const AuthorContainer = styled.div`
   div {
     align-items: center;
   }
+
+  img {
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+    border-radius: 50%;
+  }
 `;
 
 export const Counter = styled.span`

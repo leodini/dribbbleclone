@@ -1,9 +1,10 @@
 import styled from "styled-components";
 
 export const Page = styled.div`
-  width: 100vw;
+  width: 100%;
   display: flex;
-  height: 100vh;
+  height: 100%;
+  /* overflow-y: hidden; */
 `;
 
 export const Header = styled.div`

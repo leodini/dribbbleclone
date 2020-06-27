@@ -53,6 +53,6 @@ export const PostPageContainer = styled.div`
 
 export const UserImage = styled.img`
   border-radius: 50%;
-  width: ${(props) => (props.width ? props.width : "60px")};
-  height: ${(props) => (props.height ? props.height : "60px")};
+  width: ${(props) => (props.width ? props.width : "50px")};
+  height: ${(props) => (props.height ? props.height : "50px")};
 `;

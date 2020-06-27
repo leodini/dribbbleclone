@@ -32,6 +32,7 @@ const PostPage = () => {
     e.preventDefault();
     try {
       const { data } = await api.post(`/comment/${id}`, { content });
+      console.log(user);
       data.author = user;
       setPost({ ...post, comments: [data, ...comments] });
     } catch (e) {

@@ -29,11 +29,7 @@ const Post = ({ post, likePost }) => {
             {author.avatar_url ? (
               <img src={author.avatar_url} alt={author.username} />
             ) : (
-              <img
-                src={default_user}
-                alt={author.username}
-                style={{ width: "22px" }}
-              />
+              <img src={default_user} alt={author.username} />
             )}
             <Author>{author.username}</Author>
           </AuthorContainer>

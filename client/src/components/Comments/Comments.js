@@ -3,13 +3,14 @@ import { UserImage } from "../PostPage/StyledPostPage";
 import default_user from "../../assets/default_user.png";
 
 const Comments = ({ comment }) => {
+  // console.log(comment)
   return (
     <div className="comment-container">
-      {comment.author.image_url ? (
+      {comment.author.avatar_url ? (
         <UserImage
           width="32px"
           height="32px"
-          src={comment.author.image_url}
+          src={comment.author.avatar_url}
           alt={comment.author.username}
         />
       ) : (
