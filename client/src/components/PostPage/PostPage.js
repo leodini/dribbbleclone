@@ -1,7 +1,15 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
-import { AuthorContainer, PostPageContainer } from "./StyledPostPage";
+import {
+  AuthorContainer,
+  PostPageContainer,
+  InfoContainer,
+  Title,
+  Author,
+  Description,
+  Responses,
+} from "./StyledPostPage";
 import { Header } from "../";
 import CommentForm from "./CommentForm";
 import Comments from "../Comments/Comments";
@@ -44,24 +52,26 @@ const PostPage = () => {
     <>
       <Header />
       <PostPageContainer>
-        <div className="info-container">
+        <InfoContainer>
           <Avatar user={author} />
           <AuthorContainer>
-            <div>
-              <p className="title">{title}</p>
-              <p className="author">
-                <span>by</span> {author.username}
-              </p>
-            </div>
+            {/* <div> */}
+            <Title>{title}</Title>
+            <Author>
+              <span>by</span> {author.username}
+            </Author>
+            {/* </div> */}
           </AuthorContainer>
-        </div>
+        </InfoContainer>
         <img
           src={image_url}
           alt={title}
           style={{ width: "760px", borderRadius: "8px" }}
         />
-        <div className="desc">{description}</div>
+        <Description>{description}</Description>
         <CommentForm postId={id} handleSubmit={handleSubmit} />
+
+        <Responses>{comments.length} responses</Responses>
         {comments.length ? (
           comments.map((comment, i) => <Comments comment={comment} key={i} />)
         ) : (

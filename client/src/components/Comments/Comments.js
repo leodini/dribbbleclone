@@ -1,15 +1,27 @@
 import React from "react";
 import { format } from "timeago.js";
+import {
+  CommentsContainer,
+  AuthorName,
+  Content,
+  Time,
+  UserContainer,
+  ContentContainer,
+} from "./StyledComment";
 import { Avatar } from "../Shared/Avatar";
 
 const Comments = ({ comment }) => {
   return (
-    <div className="comment-container">
-      <Avatar user={comment.author} height={"30px"} width={"30px"} />
-      <span>{comment.author.username}</span>
-      <p>{comment.content}</p>
-      <p>{format(comment.createdAt)}</p>
-    </div>
+    <CommentsContainer>
+      <UserContainer>
+        <Avatar user={comment.author} height={"30px"} width={"30px"} />
+        <AuthorName>{comment.author.username}</AuthorName>
+      </UserContainer>
+      <ContentContainer>
+        <Content>{comment.content}</Content>
+        <Time>{format(comment.createdAt)}</Time>
+      </ContentContainer>
+    </CommentsContainer>
   );
 };
 
