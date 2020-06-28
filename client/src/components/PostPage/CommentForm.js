@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import useAuth from "../../hooks/useAuth";
+import { Input, Btn, Form } from "./StyledPostPage";
 
 const CommentForm = ({ handleSubmit }) => {
   const [content, setContent] = useState("");
@@ -15,17 +16,17 @@ const CommentForm = ({ handleSubmit }) => {
   return (
     <>
       {user && (
-        <form onSubmit={handleForm}>
-          <input
+        <Form onSubmit={handleForm}>
+          <Input
             type="text"
             value={content}
             placeholder="deixe seu comentario"
             onChange={(e) => setContent(e.target.value)}
           />
-          <button disabled={!content} type="submit">
+          <Btn disabled={!content} type="submit">
             enviar
-          </button>
-        </form>
+          </Btn>
+        </Form>
       )}
     </>
   );

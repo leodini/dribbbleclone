@@ -4,7 +4,8 @@ export const AuthorContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 8px;
-  max-height: 70px;
+  height: 90px;
+  max-height: 90px;
 `;
 
 export const PostPageContainer = styled.div`
@@ -37,7 +38,7 @@ export const Title = styled.p`
   font-size: 18px;
 `;
 
-export const Author = styled.p`
+export const Author = styled.span`
   color: #ea4c89;
   font-size: 16px;
   font-family: "Roboto";
@@ -72,4 +73,31 @@ export const Responses = styled.h2`
   line-height: 22px;
 `;
 
-//color: #0d0c22;
+export const Input = styled.input`
+  outline: none;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #dddd;
+  width: 90%;
+  &:focus {
+    border-bottom: 1px solid #6c63ff;
+  }
+  transition: all 0.2s ease-in-out;
+`;
+
+export const Btn = styled.button`
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 5px;
+  &:hover {
+    color: #6c63ff;
+  }
+
+  transition: all 0.2s ease-in-out;
+`;
+
+export const Form = styled.form`
+  width: 90%;
+  margin-bottom: 8px;
+`;
