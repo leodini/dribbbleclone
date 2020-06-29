@@ -9,6 +9,7 @@ import {
   Author,
   Description,
   Responses,
+  NoComment,
 } from "./StyledPostPage";
 import { Header } from "../";
 import CommentForm from "./CommentForm";
@@ -75,7 +76,7 @@ const PostPage = () => {
         {comments.length ? (
           comments.map((comment, i) => <Comments comment={comment} key={i} />)
         ) : (
-          <p>seja o primeiro a comentar</p>
+          <NoComment>seja o primeiro a comentar</NoComment>
         )}
       </PostPageContainer>
     </>

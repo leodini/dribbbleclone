@@ -101,3 +101,9 @@ export const Form = styled.form`
   width: 90%;
   margin-bottom: 8px;
 `;
+
+export const NoComment = styled.span`
+  font-size: 16px;
+  color: #b0afaa;
+  align-content: center;
+`;
