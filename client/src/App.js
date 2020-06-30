@@ -1,15 +1,13 @@
 import React from "react";
 import Routes from "./routes";
 import { AuthProvider } from "./context/authContext";
-import { DataProvider } from "./context/dataContext";
-import "./styles/Global";
+import GlobalStyles from "./styles/Global";
 
 function App() {
   return (
     <AuthProvider>
-      <DataProvider>
-        <Routes />
-      </DataProvider>
+      <Routes />
+      <GlobalStyles />
     </AuthProvider>
   );
 }

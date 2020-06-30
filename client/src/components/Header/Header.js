@@ -15,7 +15,7 @@ const Header = () => {
 
   return (
     <HeaderContainer>
-      <Link to="/" style={{ textDecoration: "none" }}>
+      <Link to="/" style={{ textDecoration: "none", color: "#000" }}>
         <h2>dribbbleo</h2>
       </Link>
       {!user ? (
@@ -42,7 +42,14 @@ const Header = () => {
               </li>
             </ul>
           </div>
-          <SignOutButton>upload</SignOutButton>
+          <SignOutButton>
+            <Link
+              to="/upload"
+              style={{ textDecoration: "none", color: "#fff" }}
+            >
+              upload
+            </Link>
+          </SignOutButton>
         </UserContainer>
       )}
     </HeaderContainer>

@@ -1,5 +1,11 @@
 import styled from "styled-components";
 
+export const Container = styled.div`
+  height: 100%;
+  width: 100vw;
+  margin: auto;
+`;
+
 export const Thumbnail = styled.label`
   margin-bottom: 20px;
   border: 1px dashed #ddd;
@@ -31,6 +37,8 @@ export const Form = styled.form`
 export const TextFields = styled.div`
   display: flex;
   flex-direction: column;
+  margin-left: 12px;
+  padding: 5px;
 `;
 
 export const ImageContainer = styled.div`
