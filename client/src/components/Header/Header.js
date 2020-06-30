@@ -33,7 +33,7 @@ const Header = () => {
             <Avatar user={user} width={"32px"} height={"32px"} />
             <ul className="dropdown-content">
               <li>
-                <Link id="link" to={`/users/${user.user_id}`}>
+                <Link id="link" to={`/user/${user.user_id}`}>
                   Profile
                 </Link>
               </li>

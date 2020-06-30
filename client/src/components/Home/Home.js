@@ -18,7 +18,7 @@ function Home() {
     setPosts(data);
   };
 
-  if (!posts) return <Loading />;
+  if (!posts.length) return <Loading />;
   return (
     <div>
       <Header />

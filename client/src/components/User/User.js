@@ -1,10 +1,30 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import PostContainer from "../Posts/PostContainer";
+import api from "../../api";
 
 const User = () => {
-  const { username } = useParams();
+  const [userData, setUserData] = useState();
+  const { id } = useParams();
 
-  return <h1>{username} oi</h1>;
+  useEffect(() => {
+    fetchUserData();
+  }, []);
+
+  const fetchUserData = async () => {
+    const { data } = await api.get(`/user/${id}`);
+    setUserData(data);
+  };
+
+  if (!userData) return null;
+  const { username, posts, bio, liked, followers, following } = userData;
+  return (
+    <div className="container">
+      <h1>{username}</h1>
+      <h2>{bio}</h2>
+      <PostContainer data={posts} />
+    </div>
+  );
 };
 
 export default User;

@@ -45,7 +45,7 @@ const Routes = () => {
           <Route path="/" exact component={Home} />
           <Route path="/signin" component={Signin} />
           <Route path="/signup" component={Signup} />
-          <Route path="/user/:username" component={User} />
+          <Route path="/user/:id" component={User} />
           <Route path="/post/:id" component={PostPage} />
           <ProtectedRoute path="/upload" token={token} component={Upload} />
         </Switch>

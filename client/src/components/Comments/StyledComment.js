@@ -5,6 +5,7 @@ export const CommentsContainer = styled.div`
   flex-direction: column;
   border-bottom: 1px solid #dddddd;
   padding-bottom: 12px;
+  margin-top: 12px;
 `;
 export const AuthorName = styled.p`
   font-family: "Roboto";

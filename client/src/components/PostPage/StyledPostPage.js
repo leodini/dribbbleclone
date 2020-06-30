@@ -3,9 +3,7 @@ import styled from "styled-components";
 export const AuthorContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin-left: 8px;
-  height: 90px;
-  max-height: 90px;
+  padding-left: 23px;
 `;
 
 export const PostPageContainer = styled.div`
@@ -23,6 +21,8 @@ export const PostPageContainer = styled.div`
 
 export const InfoContainer = styled.div`
   display: flex;
+  margin-bottom: 32px;
+  align-items: center;
 `;
 
 export const UserImage = styled.img`
