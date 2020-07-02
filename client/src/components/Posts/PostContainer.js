@@ -12,7 +12,6 @@ const Posts = ({ data, user }) => {
 
   const filterPosts = useCallback(
     (type) => {
-      console.log(type);
       const map = {
         popular: "likes",
         new: "createdAt",
@@ -33,9 +32,14 @@ const Posts = ({ data, user }) => {
     }
   }, [sortType, filterPosts, data.length]);
 
-  const sortTypes = ["popular", "new", "following"];
+  let sortTypes;
+  if (user) {
+    sortTypes = ["popular", "new", "following"];
+  } else {
+    sortTypes = ["popular", "new"];
+  }
   return (
-    <PostsContainer>
+    <>
       <ul>
         {sortTypes.map((type, i) => (
           <li key={i}>
@@ -43,9 +47,11 @@ const Posts = ({ data, user }) => {
           </li>
         ))}
       </ul>
-      {filteredData &&
-        filteredData.map((post) => <Post key={post._id} post={post} />)}
-    </PostsContainer>
+      <PostsContainer>
+        {filteredData &&
+          filteredData.map((post) => <Post key={post._id} post={post} />)}
+      </PostsContainer>
+    </>
   );
 };
 
