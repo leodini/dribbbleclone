@@ -3,6 +3,7 @@ import { Header, MainSection, Posts } from "../";
 import Loading from "../Loading/Loading";
 import api from "../../api";
 import useAuth from "../../hooks/useAuth";
+import { FilterList, ListItem } from "./StyledFilter";
 
 function Home() {
   const [posts, setPosts] = useState([]);
@@ -18,8 +19,13 @@ function Home() {
       const map = {
         art: "art",
         illustration: "illustration",
+        branding: "branding",
+        mobile: "mobile",
+        web: "web design",
+        all: "all",
       };
       const sortProperty = map[type];
+      if (sortProperty === "all") return setFilteredData(posts);
       const sorted = posts.filter((post) =>
         post.category.includes(sortProperty)
       );
@@ -39,19 +45,26 @@ function Home() {
     setFilteredData(data);
   };
 
-  const sortTypes = ["art", "illustration", "other"];
-  if (!filteredData.length) return <Loading />;
+  const sortTypes = [
+    "all",
+    "art",
+    "illustration",
+    "branding",
+    "mobile",
+    "web design",
+  ];
+  if (!posts.length) return <Loading />;
   return (
     <div>
       <Header />
       {!user && <MainSection />}
-      <ul>
+      <FilterList>
         {sortTypes.map((type, i) => (
-          <li key={i}>
-            <button onClick={() => changeSort(type)}>{type}</button>
-          </li>
+          <ListItem key={i} onClick={() => changeSort(type)}>
+            {type}
+          </ListItem>
         ))}
-      </ul>
+      </FilterList>
       {filteredData.length ? (
         <Posts data={filteredData} user={user} />
       ) : (

@@ -94,6 +94,7 @@ export const SignOutButton = styled.button`
   padding: 10px 16px;
   /* margin: 8px; */
   margin-left: 10px;
+  margin-right: 6px;
   height: 40px;
   font-size: 14px;
   font-weight: 500;
