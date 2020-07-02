@@ -23,7 +23,11 @@ function Home() {
     <div>
       <Header />
       {!user && <MainSection />}
-      {posts.length ? <Posts data={posts} /> : <p>nenhum post ainda =(</p>}
+      {posts.length ? (
+        <Posts data={posts} user={user} />
+      ) : (
+        <p>nenhum post ainda =(</p>
+      )}
     </div>
   );
 }

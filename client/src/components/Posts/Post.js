@@ -32,7 +32,6 @@ const Post = ({ post }) => {
     if (!user) return false;
     const likeIndex = numLikes.indexOf(user.user_id);
     if (likeIndex === -1) {
-      console.log("eh falso");
       setIsLiked(false);
     } else {
       setIsLiked(true);
