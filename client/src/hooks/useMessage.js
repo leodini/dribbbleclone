@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import AuthContext from "../context/authContext";
+import MessageContext from "../context/messageContext";
 
 export default function useAuth() {
-  const context = useContext(AuthContext);
+  const context = useContext(MessageContext);
 
   if (!context) throw new Error("must be inside provider");
 
