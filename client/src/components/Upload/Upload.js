@@ -8,12 +8,14 @@ import {
   ImageContainer,
   Container,
 } from "./StyledUpload";
+import useMessage from "../../hooks/useMessage";
 
 export default function Upload({ history }) {
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
   const [thumbnail, setThumbnail] = useState("");
+  const { addMessage } = useMessage();
 
   const preview = useMemo(() => {
     return thumbnail ? thumbnail : null;
@@ -31,8 +33,13 @@ export default function Upload({ history }) {
 
     try {
       await api.post("/posts", formData);
-      history.push("/");
+
+      addMessage("Post added successfully", "success");
+      setTimeout(() => {
+        history.push("/");
+      }, 3100);
     } catch (e) {
+      addMessage("Error posting your image", "error");
       throw new Error(e);
     }
   }

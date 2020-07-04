@@ -5,10 +5,14 @@ const MessageContext = createContext();
 export const MessageProvider = ({ children }) => {
   const [messages, setMessages] = useState([]);
 
-  const addMessage = (textMessage) => {
-    setMessages([...messages, textMessage]);
+  const addMessage = (textMessage, type) => {
+    const newMessage = {
+      text: textMessage,
+      type,
+    };
+    setMessages([...messages, newMessage]);
     setTimeout(() => {
-      removeMessage(textMessage);
+      removeMessage(newMessage);
     }, 3000);
   };
 
