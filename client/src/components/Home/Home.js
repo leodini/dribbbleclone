@@ -4,13 +4,11 @@ import Loading from "../Loading/Loading";
 import api from "../../api";
 import useAuth from "../../hooks/useAuth";
 import { FilterList, ListItem } from "./StyledFilter";
-import useMessage from "../../hooks/useMessage";
 
 function Home() {
   const [posts, setPosts] = useState([]);
   const { user } = useAuth();
   const [filteredData, setFilteredData] = useState([]);
-  const { addMessage } = useMessage();
 
   const changeSort = (sortType) => {
     filterPosts(sortType);
@@ -39,7 +37,6 @@ function Home() {
   useEffect(() => {
     window.document.title = "dribbbleo";
     fetchPosts();
-    addMessage("oi home", "success");
   }, []);
 
   const fetchPosts = async () => {
