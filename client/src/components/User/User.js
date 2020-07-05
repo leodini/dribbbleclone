@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import PostContainer from "../Posts/PostContainer";
 import Header from "../Header/Header";
 import { MasterHead } from "./StyledUser";
-import Avatar from "../Shared/Avatar";
+import { Avatar } from "../Shared/Avatar";
 import api from "../../api";
 
 const User = () => {
@@ -21,15 +21,14 @@ const User = () => {
 
   const randomImage = (ceil) => {
     if (typeof ceil === "number") {
-      return Math.floor(Math.random() * ceil + 1);
+      return Math.floor(Math.random() * ceil);
     }
-    throw new Error("must provide a number");
+    return 0;
   };
 
   if (!userData) return null;
   const { username, posts, bio, liked, followers, following } = userData;
-  const randomNumber = randomImage(posts.length);
-  const masterHeadImage = posts[randomNumber].image_url;
+  const masterHeadImage = posts[randomImage(posts.length)].image_url;
   return (
     <>
       <Header />
@@ -37,7 +36,7 @@ const User = () => {
         <MasterHead>
           <div className="mt-container">
             <div className="user-mt">
-              {/* <Avatar /> */}
+              <Avatar user={userData} width={"84"} height={"84"} />
               <h1>{username}</h1>
               <h2>{bio}</h2>
             </div>

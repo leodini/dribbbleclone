@@ -53,10 +53,7 @@ const Post = ({ post }) => {
       </Link>
       {author.username && (
         <InfoContainer>
-          <Link
-            to={`/user/${author.username}`}
-            style={{ textDecoration: "none" }}
-          >
+          <Link to={`/user/${author._id}`} style={{ textDecoration: "none" }}>
             <AuthorContainer>
               <Avatar user={author} />
               <Author>{author.username}</Author>

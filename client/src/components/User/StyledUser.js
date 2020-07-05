@@ -18,6 +18,7 @@ export const MasterHead = styled.div`
   .user-mt h1 {
     color: #0d0c22;
     margin-bottom: 12px;
+    margin-top: 22px;
     font-size: 32px;
     font-weight: 700;
     line-height: 38px;
