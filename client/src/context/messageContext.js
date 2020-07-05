@@ -12,11 +12,11 @@ export const MessageProvider = ({ children }) => {
     };
     setMessage(newMessage);
     setTimeout(() => {
-      removeMessage(newMessage);
-    }, 3000);
+      removeMessage();
+    }, 1500);
   };
 
-  const removeMessage = (messageToRemove) => {
+  const removeMessage = () => {
     setMessage(null);
   };
 

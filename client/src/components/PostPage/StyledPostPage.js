@@ -73,14 +73,14 @@ export const Responses = styled.h2`
   line-height: 22px;
 `;
 
-export const Input = styled.input`
+export const Input = styled.textarea`
   outline: none;
   background: transparent;
-  border: none;
-  border-bottom: 1px solid #dddd;
+  border: 1px solid #dddd;
   width: 90%;
+  resize: none;
   &:focus {
-    border-bottom: 1px solid #6c63ff;
+    border: 1px solid #6c63ff;
   }
   transition: all 0.2s ease-in-out;
 `;

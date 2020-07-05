@@ -4,6 +4,7 @@ import Loading from "../Loading/Loading";
 import api from "../../api";
 import useAuth from "../../hooks/useAuth";
 import { FilterList, ListItem } from "./StyledFilter";
+import { NoPost } from "./NoPosts";
 
 function Home() {
   const [posts, setPosts] = useState([]);
@@ -68,7 +69,7 @@ function Home() {
       {filteredData.length ? (
         <Posts data={filteredData} user={user} />
       ) : (
-        <p>nenhum post ainda =(</p>
+        <NoPost />
       )}
     </div>
   );

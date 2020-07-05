@@ -56,12 +56,10 @@ const PostPage = () => {
         <InfoContainer>
           <Avatar user={author} />
           <AuthorContainer>
-            {/* <div> */}
             <Title>{title}</Title>
             <Author>
               <span>by</span> {author.username}
             </Author>
-            {/* </div> */}
           </AuthorContainer>
         </InfoContainer>
         <img

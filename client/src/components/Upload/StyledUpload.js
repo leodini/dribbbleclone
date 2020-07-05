@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  height: 100%;
+  height: 100vh;
   width: 100vw;
   margin: auto;
 `;
@@ -11,16 +11,17 @@ export const Thumbnail = styled.label`
   border: 1px dashed #ddd;
   background-size: cover;
   cursor: pointer;
-  height: 160px;
+  height: 460px;
+  width: 660px;
   display: flex;
   justify-content: center;
   align-items: center;
 
-  .has-thumbanil {
+  .has-thumbnail {
     border: 0;
   }
 
-  .has-thumbail img {
+  .has-thumbnail img {
     display: none;
   }
 `;

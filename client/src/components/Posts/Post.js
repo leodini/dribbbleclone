@@ -26,6 +26,7 @@ const Post = ({ post }) => {
     } catch (e) {
       console.log(e);
     }
+    setIsLiked(true);
   };
 
   useEffect(() => {
@@ -50,35 +51,41 @@ const Post = ({ post }) => {
           </div>
         </div>
       </Link>
-      <InfoContainer>
-        <Link
-          to={`/user/${author.username}`}
-          style={{ textDecoration: "none" }}
-        >
-          <AuthorContainer>
-            <Avatar user={author} />
-            <Author>{author.username}</Author>
-          </AuthorContainer>
-        </Link>
-        <div>
-          <FaRegCommentAlt
-            style={{ color: "#a1a1aa", marginRight: "3px", cursor: "pointer" }}
-            size={12}
-          />
-          <Counter>{comments.length}</Counter>
-          {!isLiked ? (
-            <AiOutlineHeart
-              onClick={() => likePost(_id)}
-              style={{ color: "#a1a1aa", cursor: "pointer" }}
-              size={14}
+      {author.username && (
+        <InfoContainer>
+          <Link
+            to={`/user/${author.username}`}
+            style={{ textDecoration: "none" }}
+          >
+            <AuthorContainer>
+              <Avatar user={author} />
+              <Author>{author.username}</Author>
+            </AuthorContainer>
+          </Link>
+          <div>
+            <FaRegCommentAlt
+              style={{
+                color: "#a1a1aa",
+                marginRight: "3px",
+                cursor: "pointer",
+              }}
+              size={12}
             />
-          ) : (
-            <AiFillHeart style={{ color: "#ff5555" }} size={14} />
-          )}
+            <Counter>{comments.length}</Counter>
+            {isLiked ? (
+              <AiFillHeart style={{ color: "#ff5555" }} size={14} />
+            ) : (
+              <AiOutlineHeart
+                onClick={() => likePost(_id)}
+                style={{ color: "#a1a1aa", cursor: "pointer" }}
+                size={14}
+              />
+            )}
 
-          <Counter>{numLikes.length}</Counter>
-        </div>
-      </InfoContainer>
+            <Counter>{numLikes.length}</Counter>
+          </div>
+        </InfoContainer>
+      )}
     </PostContainer>
   );
 };

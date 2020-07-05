@@ -37,7 +37,7 @@ export default function Upload({ history }) {
       addMessage("Post added successfully", "success");
       setTimeout(() => {
         history.push("/");
-      }, 3100);
+      }, 1600);
     } catch (e) {
       addMessage("Error posting your image", "error");
       throw new Error(e);
@@ -85,7 +85,7 @@ export default function Upload({ history }) {
           <input
             type="text"
             id="description"
-            placeholder="valor cobrado por dia"
+            placeholder="uma bela descricao para complementar sua arte"
             onChange={(event) => setDescription(event.target.value)}
           />
 
