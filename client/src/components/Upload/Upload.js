@@ -7,6 +7,11 @@ import {
   TextFields,
   ImageContainer,
   Container,
+  Label,
+  TextArea,
+  Input,
+  Button,
+  Header,
 } from "./StyledUpload";
 import useMessage from "../../hooks/useMessage";
 
@@ -45,55 +50,72 @@ export default function Upload({ history }) {
   }
 
   return (
-    <Container>
-      <Form onSubmit={handleSubmit}>
-        <ImageContainer>
-          <Thumbnail
-            id="thumbnail"
-            style={{ backgroundImage: `url(${preview})` }}
-            className={thumbnail ? "has-thumbnail" : ""}
-          >
-            <img src={camera} style={{ width: "200px" }} alt="select img" />
-          </Thumbnail>
-          <input
-            type="text"
-            placeholder="url da imagem"
-            onChange={(event) => setThumbnail(event.target.value)}
-          />
-        </ImageContainer>
+    <>
+      <Header>
+        <h2>dribbbleo</h2>
+        <p>Publish your shot</p>
+        <span>Help</span>
+      </Header>
 
-        <TextFields>
-          <label htmlFor="title">TITLE *</label>
-          <input
-            type="text"
-            id="title"
-            placeholder="sua empresa incrivel"
-            onChange={(event) => setTitle(event.target.value)}
-          />
+      <Container>
+        <Form onSubmit={handleSubmit}>
+          <ImageContainer>
+            <Thumbnail
+              id="thumbnail"
+              style={{ backgroundImage: `url(${preview})` }}
+              className={thumbnail ? "has-thumbnail" : ""}
+            >
+              <img
+                src={camera}
+                style={
+                  thumbnail
+                    ? { display: "none" }
+                    : { display: "block", width: "150px" }
+                }
+                alt="select img"
+              />
+            </Thumbnail>
+            <Label htmlFor="image">Url da imagem</Label>
+            <Input
+              type="text"
+              id="image"
+              placeholder="url da imagem"
+              onChange={(event) => setThumbnail(event.target.value)}
+            />
+          </ImageContainer>
 
-          <label htmlFor="categories">
-            CATEGORIES * <span>(separadas por virgula)</span>
-          </label>
-          <input
-            type="text"
-            id="categories"
-            placeholder="quais tecnologias usam?"
-            onChange={(event) => setCategory(event.target.value)}
-          />
+          <TextFields>
+            <Label htmlFor="title">Titulo *</Label>
+            <Input
+              type="text"
+              id="title"
+              onChange={(event) => setTitle(event.target.value)}
+            />
 
-          <label htmlFor="description">DESCRIPTION </label>
-          <input
-            type="text"
-            id="description"
-            placeholder="uma bela descricao para complementar sua arte"
-            onChange={(event) => setDescription(event.target.value)}
-          />
+            <Label htmlFor="categories">
+              Categorias<span></span>
+            </Label>
+            <Input
+              type="text"
+              id="categories"
+              placeholder="categorias separadas por virgula"
+              onChange={(event) => setCategory(event.target.value)}
+            />
 
-          <button type="submit" className="btn">
-            Cadastrar
-          </button>
-        </TextFields>
-      </Form>
-    </Container>
+            <Label htmlFor="description">Description </Label>
+            <TextArea
+              type="text"
+              id="description"
+              placeholder="Tell us about your process and how you arrived at this design"
+              onChange={(event) => setDescription(event.target.value)}
+            />
+
+            <Button type="submit" className="btn">
+              Cadastrar
+            </Button>
+          </TextFields>
+        </Form>
+      </Container>
+    </>
   );
 }
