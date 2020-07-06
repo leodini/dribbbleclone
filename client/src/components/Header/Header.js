@@ -37,7 +37,7 @@ const Header = () => {
               </Link>
               <li className="rule"></li>
               <li>
-                <Link to="/settings">Settings</Link>
+                <Link to="/settings">Edit Profile</Link>
               </li>
               <li onClick={signout}>
                 <span>Signout</span>

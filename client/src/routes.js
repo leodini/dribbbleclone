@@ -1,6 +1,5 @@
 import React, { Suspense, lazy } from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
-// import { PostPage } from "./components";
 import useAuth from "./hooks/useAuth";
 
 const Home = lazy(() => import("./components/Home/Home"));
@@ -8,7 +7,7 @@ const Signin = lazy(() => import("./components/Auth/Signin"));
 const Signup = lazy(() => import("./components/Auth/Signup"));
 const User = lazy(() => import("./components/User/User"));
 const Upload = lazy(() => import("./components/Upload/Upload"));
-
+const Settings = lazy(() => import("./components/Settings/Settings"));
 const PostPage = lazy(() => import("./components/PostPage/PostPage"));
 
 export const ProtectedRoute = ({ component: Component, token, ...rest }) => {
@@ -48,6 +47,7 @@ const Routes = () => {
           <Route path="/user/:id" component={User} />
           <Route path="/post/:id" component={PostPage} />
           <ProtectedRoute path="/upload" token={token} component={Upload} />
+          <ProtectedRoute path="/settings" token={token} component={Settings} />
         </Switch>
       </Suspense>
     </BrowserRouter>

@@ -28,7 +28,6 @@ const User = () => {
 
   if (!userData) return null;
   const { username, posts, bio, liked, followers, following } = userData;
-  const masterHeadImage = posts[randomImage(posts.length)].image_url;
   return (
     <>
       <Header />
@@ -40,12 +39,18 @@ const User = () => {
               <h1>{username}</h1>
               <h2>{bio}</h2>
             </div>
-            <div className="img-container">
-              <div className="masterhead-block-container">
-                <div className="block"></div>
+            {posts.length && (
+              <div className="img-container">
+                <div className="masterhead-block-container">
+                  <div className="block"></div>
+                </div>
+
+                <img
+                  src={posts[randomImage(posts.length)].image_url}
+                  alt={username}
+                />
               </div>
-              <img src={masterHeadImage} alt={username} />
-            </div>
+            )}
           </div>
         </MasterHead>
         <PostContainer data={posts} />
