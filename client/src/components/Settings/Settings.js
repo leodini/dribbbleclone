@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import api from "../../api";
 import Header from "../Header/Header";
 import { Avatar } from "../Shared/Avatar";
@@ -15,16 +15,17 @@ const Settings = () => {
   const [userData, setUserData] = useState(null);
   const { user } = useAuth();
 
-  useEffect(() => {
-    getUserData();
-  }, []);
-
-  const getUserData = async () => {
+  const getUserData = useCallback(async () => {
     const { data } = await api.get(`/user/${user.user_id}`);
     setUserData(data);
     console.log(data);
-  };
+  }, [user]);
 
+  useEffect(() => {
+    getUserData();
+  }, [getUserData]);
+
+  if (!userData) return null;
   return (
     <>
       <Header />

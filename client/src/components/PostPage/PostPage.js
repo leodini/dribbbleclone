@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import {
@@ -23,14 +23,14 @@ const PostPage = () => {
   const [post, setPost] = useState(null);
   const { user } = useAuth();
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     const { data } = await api.get(`/posts/${id}`);
     setPost(data);
-  };
+  }, [id]);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
 
   const handleSubmit = async (content) => {
     try {

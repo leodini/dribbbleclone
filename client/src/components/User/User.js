@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import PostContainer from "../Posts/PostContainer";
 import Header from "../Header/Header";
@@ -10,14 +10,14 @@ const User = () => {
   const [userData, setUserData] = useState();
   const { id } = useParams();
 
-  useEffect(() => {
-    fetchUserData();
-  }, []);
-
-  const fetchUserData = async () => {
+  const fetchUserData = useCallback(async () => {
     const { data } = await api.get(`/user/${id}`);
     setUserData(data);
-  };
+  }, [id]);
+
+  useEffect(() => {
+    fetchUserData();
+  }, [fetchUserData]);
 
   const randomImage = (ceil) => {
     if (typeof ceil === "number") {
@@ -27,7 +27,7 @@ const User = () => {
   };
 
   if (!userData) return null;
-  const { username, posts, bio, liked, followers, following } = userData;
+  const { username, posts, bio, followers, following } = userData;
   return (
     <>
       <Header />
@@ -53,6 +53,8 @@ const User = () => {
             )}
           </div>
         </MasterHead>
+        {followers && <span>Followers followers.lenght</span>}
+        {following && <span>Following following.lenght</span>}
         <PostContainer data={posts} />
       </div>
     </>
