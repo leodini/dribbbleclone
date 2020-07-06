@@ -16,5 +16,9 @@ export default createGlobalStyle`
         font-family: 'Roboto', sans-serif;
         text-decoration: none;
     }
+    a{
+        text-decoration: none;
+        color: #000;
+    }
     
 `;

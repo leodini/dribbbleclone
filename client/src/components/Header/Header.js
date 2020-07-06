@@ -32,13 +32,15 @@ const Header = () => {
           <div className="dropdown">
             <Avatar user={user} width={"32px"} height={"32px"} />
             <ul className="dropdown-content">
+              <Link id="link" to={`/user/${user.user_id}`}>
+                <li>Profile</li>
+              </Link>
+              <li className="rule"></li>
               <li>
-                <Link id="link" to={`/user/${user.user_id}`}>
-                  Profile
-                </Link>
+                <Link to="/settings">Settings</Link>
               </li>
               <li onClick={signout}>
-                <p>Signout</p>
+                <span>Signout</span>
               </li>
             </ul>
           </div>
