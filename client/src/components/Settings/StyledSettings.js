@@ -45,6 +45,34 @@ export const UserInfo = styled.div`
 
 export const SettingsContainer = styled.div``;
 
-export const Tabs = styled.div``;
+export const Separator = styled.div`
+  background: #ccc;
+  width: 100%;
+  height: 1px;
+  margin-bottom: 22px;
+`;
 
-export const Edit = styled.div``;
+export const Edit = styled.form`
+  display: flex;
+  flex-direction: column;
+
+  img {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    margin-bottom: 12px;
+  }
+
+  button {
+    border-radius: 6px;
+    color: #fff;
+    background-color: #ea4c89;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 8px;
+    width: 120px;
+    font-weight: bold;
+    margin: 22px 0;
+  }
+`;

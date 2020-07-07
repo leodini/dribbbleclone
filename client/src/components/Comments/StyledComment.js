@@ -6,6 +6,10 @@ export const CommentsContainer = styled.div`
   border-bottom: 1px solid #dddddd;
   padding-bottom: 12px;
   margin-top: 12px;
+
+  &:last-child {
+    border-bottom: none;
+  }
 `;
 export const AuthorName = styled.p`
   font-family: "Roboto";

@@ -10,6 +10,21 @@ export const MasterHead = styled.div`
     justify-content: space-around;
   }
 
+  button {
+    border-radius: 6px;
+    padding: 12px;
+    background-color: #f3f3f4;
+    color: #0d0c22;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 6px;
+    width: 90px;
+  }
+
+  button:hover {
+    background-color: #ccc;
+  }
+
   .mt-container .user-mt {
     display: flex;
     flex-direction: column;
@@ -44,8 +59,5 @@ export const MasterHead = styled.div`
     top: -40px;
     z-index: -1;
     background: #ea4c89;
-  }
-
-  .img-container .masterhead-block-container .block {
   }
 `;

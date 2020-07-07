@@ -4,11 +4,13 @@ import PostContainer from "../Posts/PostContainer";
 import Header from "../Header/Header";
 import { MasterHead } from "./StyledUser";
 import { Avatar } from "../Shared/Avatar";
+import useAuth from "../../hooks/useAuth";
 import api from "../../api";
 
 const User = () => {
   const [userData, setUserData] = useState();
   const { id } = useParams();
+  const { user } = useAuth();
 
   const fetchUserData = useCallback(async () => {
     const { data } = await api.get(`/user/${id}`);
@@ -38,6 +40,7 @@ const User = () => {
               <Avatar user={userData} width={"84"} height={"84"} />
               <h1>{username}</h1>
               <h2>{bio}</h2>
+              {user.username !== username ? <button>+ Follow</button> : null}
             </div>
             {posts.length && (
               <div className="img-container">
@@ -53,8 +56,9 @@ const User = () => {
             )}
           </div>
         </MasterHead>
-        {followers && <span>Followers followers.lenght</span>}
-        {following && <span>Following following.lenght</span>}
+        {posts && <span>Shots {posts.length}</span>}
+        {followers && <span>Followers {followers.length}</span>}
+        {following && <span>Following {following.length}</span>}
         <PostContainer data={posts} />
       </div>
     </>
