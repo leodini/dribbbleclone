@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
+import { FiCheck } from "react-icons/fi";
 import { useParams } from "react-router-dom";
 import PostContainer from "../Posts/PostContainer";
 import Header from "../Header/Header";
@@ -10,6 +11,7 @@ import { Separator } from "../Settings/StyledSettings";
 
 const User = () => {
   const [userData, setUserData] = useState();
+  const [isFollowing, setIsFollowing] = useState(false);
   const { id } = useParams();
   const { user } = useAuth();
 
@@ -18,6 +20,20 @@ const User = () => {
     console.log(data);
     setUserData(data);
   }, [id]);
+
+  const handleFollow = async () => {
+    try {
+      const { data } = await api.post(`/user/follow/${id}`);
+      setUserData(data);
+      if (user && userData.followers.includes(user.user_id)) {
+        setIsFollowing(true);
+      } else {
+        setIsFollowing(false);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   useEffect(() => {
     fetchUserData();
@@ -42,7 +58,14 @@ const User = () => {
               <Avatar user={userData} width={"84"} height={"84"} />
               <h1>{username}</h1>
               <h2>{bio}</h2>
-              {user.username !== username ? <button>+ Follow</button> : null}
+              {user && followers.includes(user.user_id) ? (
+                <button onClick={handleFollow}>
+                  <FiCheck style={{ marginRight: "6px" }} />
+                  Following
+                </button>
+              ) : (
+                <button onClick={handleFollow}>+ Follow</button>
+              )}
             </div>
             {posts.length && (
               <div className="img-container">

@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from "react";
+import { Link } from "react-router-dom";
 import camera from "../../assets/camera.png";
 import api from "../../api";
 import {
@@ -52,7 +53,9 @@ export default function Upload({ history }) {
   return (
     <>
       <Header>
-        <h2>dribbbleo</h2>
+        <Link to="/">
+          <h2>dribbbleo</h2>
+        </Link>
         <p>Publish your shot</p>
         <span>Help</span>
       </Header>

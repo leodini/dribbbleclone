@@ -18,7 +18,9 @@ export const MasterHead = styled.div`
     font-weight: bold;
     cursor: pointer;
     margin-top: 6px;
-    width: 90px;
+    width: 110px;
+    display: flex;
+    align-items: center;
   }
 
   button:hover {

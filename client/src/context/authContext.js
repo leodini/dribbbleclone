@@ -10,6 +10,7 @@ export const AuthProvider = ({ children }) => {
 
   const tokenData = useCallback(() => {
     if (token) {
+      // JWT.storeToken(token);
       const { sub } = JWT.parseToken(token);
       setUser(sub);
       api.defaults.headers["Authorization"] = token;
@@ -26,8 +27,9 @@ export const AuthProvider = ({ children }) => {
       const {
         data: { token },
       } = await api.post("/signin", form);
-      JWT.storeToken(token);
+      console.log(token);
       setToken(token);
+      JWT.storeToken(token);
     } catch (err) {
       console.log(err);
     }
@@ -44,8 +46,8 @@ export const AuthProvider = ({ children }) => {
       const {
         data: { token },
       } = await api.post("/signup", newUser);
-      JWT.storeToken(token);
       setToken(token);
+      JWT.storeToken(token);
     } catch (err) {
       console.log(err);
     }
