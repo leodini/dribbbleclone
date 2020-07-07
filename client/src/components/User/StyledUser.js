@@ -61,3 +61,22 @@ export const MasterHead = styled.div`
     background: #ea4c89;
   }
 `;
+
+export const UserStats = styled.div`
+  width: 93%;
+  margin: auto;
+  margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+  .label {
+    font-weight: bold;
+    color: #0d0c22;
+    margin: 12px 14px;
+  }
+
+  .label .count {
+    color: #adadb5;
+    font-weight: normal;
+    margin-right: 4px;
+  }
+`;

@@ -46,8 +46,9 @@ export const UserInfo = styled.div`
 export const SettingsContainer = styled.div``;
 
 export const Separator = styled.div`
-  background: #ccc;
-  width: 100%;
+  background: #e7e7e9;
+  width: ${(props) => (props.width ? props.width : "100%")};
+  margin: auto;
   height: 1px;
   margin-bottom: 22px;
 `;

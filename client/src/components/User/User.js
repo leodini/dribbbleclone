@@ -2,10 +2,11 @@ import React, { useState, useEffect, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import PostContainer from "../Posts/PostContainer";
 import Header from "../Header/Header";
-import { MasterHead } from "./StyledUser";
+import { MasterHead, UserStats } from "./StyledUser";
 import { Avatar } from "../Shared/Avatar";
 import useAuth from "../../hooks/useAuth";
 import api from "../../api";
+import { Separator } from "../Settings/StyledSettings";
 
 const User = () => {
   const [userData, setUserData] = useState();
@@ -14,6 +15,7 @@ const User = () => {
 
   const fetchUserData = useCallback(async () => {
     const { data } = await api.get(`/user/${id}`);
+    console.log(data);
     setUserData(data);
   }, [id]);
 
@@ -29,7 +31,7 @@ const User = () => {
   };
 
   if (!userData) return null;
-  const { username, posts, bio, followers, following } = userData;
+  const { username, posts, bio, followers, following, liked } = userData;
   return (
     <>
       <Header />
@@ -56,9 +58,29 @@ const User = () => {
             )}
           </div>
         </MasterHead>
-        {posts && <span>Shots {posts.length}</span>}
-        {followers && <span>Followers {followers.length}</span>}
-        {following && <span>Following {following.length}</span>}
+        <UserStats>
+          {posts && (
+            <span className="label">
+              Shots <span className="count">{posts.length}</span>
+            </span>
+          )}
+          {followers && (
+            <span className="label">
+              Followers <span className="count">{followers.length}</span>
+            </span>
+          )}
+          {following && (
+            <span className="label">
+              Following <span className="count">{following.length}</span>
+            </span>
+          )}
+          {liked && (
+            <span className="label">
+              Liked <span className="count">{liked.length}</span>
+            </span>
+          )}
+        </UserStats>
+        <Separator width={"93%"} />
         <PostContainer data={posts} />
       </div>
     </>
