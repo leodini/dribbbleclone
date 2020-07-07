@@ -11,13 +11,15 @@ import {
   Separator,
   Edit,
 } from "./StyledSettings";
+import useMessage from "../../hooks/useMessage";
 
-const Settings = () => {
+const Settings = ({ history }) => {
   const [userData, setUserData] = useState(null);
   const [username, setUsername] = useState("");
   const [profilePicture, setProfilePicture] = useState("");
   const [bio, setBio] = useState("");
-  const { user } = useAuth();
+  const { addMessage } = useMessage();
+  const { user, getNewToken } = useAuth();
 
   const getUserData = useCallback(async () => {
     const {
@@ -37,7 +39,12 @@ const Settings = () => {
       avatar_url: profilePicture,
     };
     try {
-      await api.put("user", userData);
+      const res = await api.put("/user", userData);
+      addMessage("User edited successfully", "success");
+      getNewToken(res.data);
+      setTimeout(() => {
+        history.push("/");
+      }, 1600);
     } catch (e) {
       throw new Error(e);
     }

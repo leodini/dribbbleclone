@@ -57,12 +57,18 @@ export const AuthProvider = ({ children }) => {
     setToken(null);
   };
 
+  const getNewToken = (token) => {
+    setToken(token);
+  };
+
   useEffect(() => {
     tokenData();
   }, [token, tokenData]);
 
   return (
-    <AuthContext.Provider value={{ user, token, signin, signout, signup }}>
+    <AuthContext.Provider
+      value={{ user, token, signin, signout, signup, getNewToken }}
+    >
       {children}
     </AuthContext.Provider>
   );
