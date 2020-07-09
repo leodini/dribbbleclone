@@ -3,8 +3,9 @@ import styled from "styled-components";
 
 const NoPosts = styled.p`
   font-size: 28px;
-  color: #6e6d7a;
+  color: #ccc;
   text-align: center;
+  margin: auto;
 `;
 const NoPostsContainer = styled.div`
   width: 100%;
