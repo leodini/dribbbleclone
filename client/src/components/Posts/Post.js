@@ -30,7 +30,7 @@ const Post = ({ post }) => {
   };
 
   useEffect(() => {
-    if (!user) return false;
+    if (!user) return;
     const likeIndex = numLikes.indexOf(user.user_id);
     if (likeIndex === -1) {
       setIsLiked(false);

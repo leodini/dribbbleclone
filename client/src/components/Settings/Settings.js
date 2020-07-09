@@ -38,9 +38,10 @@ const Settings = ({ history }) => {
       avatar_url: profilePicture,
     };
     try {
-      const res = await api.put("/user", userData);
+      const { data } = await api.put("/user", userData);
       addMessage("User edited successfully", "success");
-      getNewToken(res.data);
+      //setting new token with the changes made
+      getNewToken(data);
       setTimeout(() => {
         history.push("/");
       }, 1600);
@@ -70,7 +71,6 @@ const Settings = ({ history }) => {
         <SettingsContainer>
           <Separator></Separator>
           <Edit onSubmit={handleSubmit}>
-            <img src={profilePicture} alt={username} />
             {profilePicture ? (
               <img src={profilePicture} alt="" />
             ) : (

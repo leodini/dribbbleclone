@@ -8,10 +8,10 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(JWT.readToken() || null);
 
-  const tokenData = useCallback(() => {
+  const tokenData = useCallback(async () => {
     if (token) {
       // JWT.storeToken(token);
-      const { sub } = JWT.parseToken(token);
+      const { sub } = await JWT.parseToken(token);
       setUser(sub);
       api.defaults.headers["Authorization"] = token;
     }
@@ -60,6 +60,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const getNewToken = (token) => {
+    JWT.storeToken(token);
     setToken(token);
   };
 
