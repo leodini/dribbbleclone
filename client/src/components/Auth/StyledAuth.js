@@ -88,12 +88,12 @@ export const Button = styled.button`
   cursor: pointer;
   border-radius: 8px;
   width: 160px;
-  background-color: #6c63ff;
+  background-color: var(--primary);
   color: #fff;
   margin-top: 22px;
   transition: all 0.2s;
   :hover {
-    background-color: #cfaeff;
+    background-color: var(--primary-hover);
   }
 `;
 

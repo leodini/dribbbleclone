@@ -67,7 +67,7 @@ export const Edit = styled.form`
   button {
     border-radius: 6px;
     color: #fff;
-    background-color: #ea4c89;
+    background-color: var(--primary);
     border: none;
     cursor: pointer;
     outline: none;
@@ -75,5 +75,9 @@ export const Edit = styled.form`
     width: 120px;
     font-weight: bold;
     margin: 22px 0;
+  }
+
+  button:hover {
+    background-color: var(--primary-hover);
   }
 `;

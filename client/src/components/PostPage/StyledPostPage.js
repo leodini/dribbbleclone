@@ -39,7 +39,7 @@ export const Title = styled.p`
 `;
 
 export const Author = styled.span`
-  color: #ea4c89;
+  color: var(--primary);
   font-size: 16px;
   font-family: "Roboto";
   font-weight: 700;
@@ -80,7 +80,7 @@ export const Input = styled.textarea`
   width: 90%;
   resize: none;
   &:focus {
-    border: 1px solid #6c63ff;
+    border: 1px solid var(--primary);
   }
   transition: all 0.2s ease-in-out;
 `;
@@ -91,7 +91,7 @@ export const Btn = styled.button`
   background: transparent;
   padding: 5px;
   &:hover {
-    color: #6c63ff;
+    color: var(--primary-hover);
   }
 
   transition: all 0.2s ease-in-out;

@@ -20,5 +20,10 @@ export default createGlobalStyle`
         text-decoration: none;
         color: #000;
     }
+
+    :root{
+        --primary: #ea4c89;
+        --primary-hover: #f082ac;
+    }
     
 `;

@@ -54,7 +54,7 @@ function Home() {
     "mobile",
     "web design",
   ];
-  if (!posts.length) return <Loading />;
+  if (!posts.length) return null;
   return (
     <div>
       <Header />

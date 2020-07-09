@@ -34,14 +34,14 @@ export const SignUpButton = styled.button`
   height: 40px;
   font-size: 14px;
   font-weight: 500;
-  background: #6c63ff;
+  background: var(--primary);
   border: none;
   color: #fff;
   width: 100px;
   font-family: Roboto, sans-serif;
   border-radius: 8px;
   :hover {
-    background-color: #63a9ff;
+    background-color: var(--primary);
   }
 `;
 
@@ -146,13 +146,13 @@ export const SignOutButton = styled.button`
   height: 40px;
   font-size: 14px;
   font-weight: 500;
-  background: #6c63ff;
+  background: var(--primary);
   border: none;
   color: #fff;
   width: 100px;
   font-family: Roboto, sans-serif;
   border-radius: 8px;
   :hover {
-    background-color: #63a9ff;
+    background-color: var(--primary-hover);
   }
 `;

@@ -60,7 +60,7 @@ export const MasterHead = styled.div`
     right: 120px;
     top: -40px;
     z-index: -1;
-    background: #ea4c89;
+    background: var(--primary);
   }
 `;
 

@@ -3,6 +3,7 @@ import api from "../../api";
 import Header from "../Header/Header";
 import { Avatar } from "../Shared/Avatar";
 import useAuth from "../../hooks/useAuth";
+import default_user from "../../assets/user.png";
 import { Input, Label, TextArea } from "../Upload/StyledUpload";
 import {
   UserInfo,
@@ -14,7 +15,6 @@ import {
 import useMessage from "../../hooks/useMessage";
 
 const Settings = ({ history }) => {
-  const [userData, setUserData] = useState(null);
   const [username, setUsername] = useState("");
   const [profilePicture, setProfilePicture] = useState("");
   const [bio, setBio] = useState("");
@@ -25,7 +25,6 @@ const Settings = ({ history }) => {
     const {
       data: { username, bio, avatar_url },
     } = await api.get(`/user/${user.user_id}`);
-    // setUserData(data);
     setUsername(username);
     setBio(bio);
     setProfilePicture(avatar_url);
@@ -72,6 +71,11 @@ const Settings = ({ history }) => {
           <Separator></Separator>
           <Edit onSubmit={handleSubmit}>
             <img src={profilePicture} alt={username} />
+            {profilePicture ? (
+              <img src={profilePicture} alt="" />
+            ) : (
+              <img src={default_user} alt={username} />
+            )}
             <Label htmlFor="username">Profile picture</Label>
             <Input
               id="profilePicture"
