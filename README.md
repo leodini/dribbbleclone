@@ -4,7 +4,7 @@
 
 ### `Client`
 
-Web app made with javascript, Redux and React
+Web app made with javascript, React, context api and hooks
 
 you can check the result [here](https://dribbbleo.netlify.app/)
 
