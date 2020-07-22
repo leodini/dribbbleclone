@@ -42,6 +42,7 @@ function Home() {
 
   const fetchPosts = async () => {
     const { data } = await api.get("/posts");
+    console.log(data);
     setPosts(data);
     setFilteredData(data);
   };

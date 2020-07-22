@@ -2,7 +2,7 @@ import React from "react";
 import { PostsContainer } from "./StyledPost";
 import Post from "./Post";
 
-const Posts = ({ data, user }) => {
+const Posts = ({ data }) => {
   return (
     <>
       <PostsContainer>
